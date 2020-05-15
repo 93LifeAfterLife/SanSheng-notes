@@ -4,7 +4,7 @@
 - [计算机网络](notes/计算机基础_网络.md) </br>
 
 ## 💾 MySQL数据库
-- [数据库系统原理](notes/mysql_数据库系统原理) </br>
+- [数据库系统原理](notes/mysql_数据库系统原理.md) </br>
 - [SQL语句](notes/mysql_sql语句.md) </br>
 
 ## ☕ Java语言核心

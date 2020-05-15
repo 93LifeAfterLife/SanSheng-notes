@@ -26,7 +26,7 @@ Docsify 是一个动态生成文档网站的工具, 它会在运行时将 .md �
 npm i docsify-cli -g
 ```
 
-<div align="center"> <img src="..\imgs\docsify01.png" width=""> </div><br>
+<div align="center"> <img src="imgs\docsify01.png" width=""> </div><br>
 
 查看已安装的 docsify 客户端版本 ( 截止*2020年5月14日*, 最新版为 v4.4.0 ) :
 
