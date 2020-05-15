@@ -2,7 +2,7 @@
 
 ### :pencil2:node.js 简介
 
-<img src="imgs_backup\nodejs.svg" style="zoom:25%; background: rgb(51,51,51)" />
+<img src="https://i1.fuimg.com/719027/0d30b6b68bbdf4bc.png" style="width: 250px; background: rgb(51,51,51)" />
 
 - Node.js 就是运行在服务端的 JavaScript , 是一种环境; 基于 Google 的 V8 引擎, 执行效率高、性能稳定.
 

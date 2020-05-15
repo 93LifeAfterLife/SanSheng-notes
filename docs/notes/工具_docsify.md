@@ -2,7 +2,7 @@
 
 ###  ✏️Docsify简介
 
-<div align="center"> <img src="imgs_backup\docsify.svg" width=""> </div><br>
+<div align="center"> <img src="https://i1.fuimg.com/719027/5cf1f2292bcaedb7.png" width="150px"> </div><br>
 
 Docsify 是一个动态生成文档网站的工具, 它会在运行时将 .md 文件转为 .html 文件, 而非静态生成方式 ( 如GitBook、Hexo ). 这样的好处在于, 无需生成大量 .html 文件污染 commit 记录, 仅需要创建一个 index.html 即可开始专注于文档的编写, 并直接部署在 GitHub Pages.
 
