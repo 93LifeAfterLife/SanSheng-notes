@@ -359,7 +359,7 @@ $ vim merge_clash.md					// 修改文件
 $ cat merge_clash.md					// 查看文件
  # Title:Merge clash
 $ git branch							// 查看当前所在分支
- * master								// 当前处于 master 分支
+ * master								// 当前处于 master 分支,*选中的表示当前所在分支
 $ git checkout -b testing				// 创建并进入 testing 分支
  Switched to a new branch 'testing'		
 $ vim merge_clash.md					// 在新分支中修改文件
@@ -367,7 +367,9 @@ $ vim merge_clash.md					// 在新分支中修改文件
 $ cat merge_clash.md
  # Title:Merge clash
  ## testing
-$ git commit -am 'changed the .md file at branch testing'
-
+$ git commit -am 'changed the .md file at branch testing'		// 快捷提交更改
+ [testing 1a7e1f8] changed the .md file at branch testing
+  1 file changed, 23 insertions(+)
+$ git checkout master					// 回到 master 分支
 ```
 
