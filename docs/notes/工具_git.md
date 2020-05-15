@@ -2,7 +2,7 @@
 
 ###  ✏️ Git 简介
 
-<div align="center"> <img src="..\imgs\git.png" width=""> </div><br>
+<div align="center"> <img src="imgs\git.png" width=""> </div><br>
 
 Git 是一个免费开源的分布式版本控制系统，旨在快速高效地处理不管是大型还是小型的项目的所有内容。
 

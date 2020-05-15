@@ -1,6 +1,6 @@
 #  😃 Emoji手册
 
-<div align="center"> <img src="..\imgs\emoji.png" width=""> </div><br>
+<div align="center"> <img src="imgs\emoji.png" width=""> </div><br>
 
 自苹果公司发布的 iOS 5 输入法中加入了 emoji 后，这种表情符号开始席卷全球，emoji 已被大多数现代计算机系统所兼容的 Unicode 编码采纳，普遍应用于各种手机短信和社交网络中。
 
