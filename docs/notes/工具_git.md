@@ -40,8 +40,60 @@ Git 是一个免费开源的分布式版本控制系统，旨在快速高效地�
 
 下载地址: https://git-scm.com/downloads
 
-// TO DO 2020年5月15日14:45:09
+
+
+
 
 ### ✏️ Git 常用指令
 
-// TO DO 2020年5月15日14:45:15
+
+
+
+
+### ✏️ Git 仓库
+
+git 把需要用来进行版本控制的本地文件目录称作为一个 `仓库`( repository ), git 能在当前仓库中持续跟踪并记录所有发生的操作.
+
+你也可以看到在初始化 `repo` 或者从远程克隆 `git clone <仓库地址> `后, 在本地文件夹中会新增一个隐藏的 `.git`文件夹. 这个文件夹十分重要, 代表了 git 对于本地仓库的控制信息.
+
+#### ⛪ Git 仓库的结构
+
+<div align="center"> <img src="https://i1.fuimg.com/719027/67189a824cb86208.png" width=""> </div><br>
+
+说明:
+
+- `Directory` : Git 所管理的目录 / 仓库, 包含工作空间和Git管理空间
+- `Workspace `: 需要通过 Git 管理的目录和文件
+- `.git `: 存放 Git 管理信息的目录, 初始化仓库时自动创建
+- `Stage `: 暂存区, 或叫待提交更新区, 在提交之前, 可以先把所有的更新放置在这里
+- `Local Repo `: 本地仓库, 拥有许多的 Branch 分支, 其中的一个就是本地的某一版本库
+- `Stash` : 工作状态保存栈, 用来保存和恢复工作空间中的临时状态
+
+
+
+### ✏️ 简单的代码提交流程
+
+1.  查看工作区`Workspace`代码相对于暂存区`Stage`的差别:
+
+```
+git status
+```
+
+2.  将当前目录下修改的所有信息从工作区`Workspace`添加到暂存区`Stage`, `.` 代表当前目录
+
+```
+git add .
+```
+
+3.  将暂存区的代码提交到本地版本库`Local Repo`, 注意加上 `-m` 表示提交的信息
+
+```
+git commit -m "<commit message>"
+```
+
+4.  将本地版本库`Local Repo` 推送到远程服务器, `origin` 代表远程主机 ,`master` 代表远程服务器上的 `master` 分支, 当然分支名是可以按照需求来修改的.
+
+```
+git push origin master
+```
+
