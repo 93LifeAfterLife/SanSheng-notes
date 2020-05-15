@@ -348,3 +348,29 @@ $ git branch -d <branch name>
 
 #### ❕ 解决冲突案例
 
+在 `tests \ git_test` 文件夹下新建一个 `merge_clash.md` 文件
+
+```
+$ touch merge_clash.md					// 新建文件
+$ ls									// 查看当前目录下的所有文件
+ merge_clash.md
+$ vim merge_clash.md					// 修改文件
+ // 插入一行一级标题: # Title:Merge clash, 然后esc :wq 保存退出
+$ cat merge_clash.md					// 查看文件
+ # Title:Merge clash
+$ git branch							// 查看当前所在分支
+ * master								// 当前处于 master 分支,*选中的表示当前所在分支
+$ git checkout -b testing				// 创建并进入 testing 分支
+ Switched to a new branch 'testing'		
+$ vim merge_clash.md					// 在新分支中修改文件
+ // 新增一行二级标题: ## testing
+$ cat merge_clash.md
+ # Title:Merge clash
+ ## testing
+$ git commit -am 'changed the .md file at branch testing'		// 快捷提交更改
+ [testing 1a7e1f8] changed the .md file at branch testing
+  1 file changed, 23 insertions(+)
+$ git checkout master					// 回到 master 分支
+
+```
+
