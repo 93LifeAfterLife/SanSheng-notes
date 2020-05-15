@@ -201,8 +201,28 @@ $ git status --short						// 同 -s
 - 修改过的文件前面有                    `[]M` 或 `M[]` 标记
   -  M标记有两种, 一种是靠左, 即占第一个位置, 表示: 该文件被修改了且已经放入了暂存区.
   -  另一种是靠右, 即占第二个位置, 表示: 该文件被修改了但是还未放入暂存区.
+  
+- 更多状态码如下:
 
-如下图:
+`A` : 你本地新增的文件（服务器上没有）.
+
+`C` : 文件的一个新拷贝.
+
+`D` : 你本地删除的文件（服务器上还在）.
+
+`M` : 文件的内容或者mode被修改了.
+
+`R` : 文件名被修改了。
+
+`T` : 文件的类型被修改了。
+
+`U` : 文件没有被合并(你需要完成合并才能进行提交)。
+
+`X` : 未知状态(很可能是遇到git的bug了，你可以向git提交bug report)。
+
+
+
+常见的状态码, 如下图:
 
 <div align="center"> <img src="https://i2.tiimg.com/719027/e3ff5c8124abb5ec.png" width=""> </div><br>
 
@@ -371,8 +391,106 @@ $ git commit -am 'changed the .md file at branch testing'		// 快捷提交更改
  [testing 1a7e1f8] changed the .md file at branch testing
   1 file changed, 23 insertions(+)
 $ git checkout master					// 回到 master 分支
-
-
-
+ Switched to branch 'master'
+ // 切换回 master 分支发现, master 还是原样, 只有一行一级标题
+$ cat merge_clash.md
+ # Title:Merge clash
+$ vim merge_clash.md 					// 重新回到 master 分支修改文件
+ // 新增一行三级标题: ### master
+$ cat merge_clash.md
+ # Title:Merge clash
+ ### master
+$ git diff
+ // 可以看到变化
+$ git merge testing						// 在当前的 master 分支下合并 testing 分支
+ Auto-merging merge_clash.md
+ CONFLICT (content): Merge conflict in runoob.php
+ Automatic merge failed; fix conflicts and then commit the result.
+ // 表示存在 merge conflict 合并冲突, 并且在 merge_clash.md 中自动标注了冲突内容
+$ cat merge_clash.md
+ <<<<<<< HEAD
+ ### master
+ =======
+ ## testing
+ >>>>>>> testing
+$ vim merge_clash.md 					// 手动修改冲突, 将两行代码合并
+$ cat merge_clash.md
+ # Title:Merge clash
+ ## testing
+ ### master
+ // 如上, 手动解决了冲突代码
+$ git status -s
+ UU merge_clash.md						// 表示文件没有被合并
+$ git add merge_clash.md				// 使用 add 告诉 Git 文件冲突已经解决, 并存入到暂存区中
+$ git status -s
+ M  merge_clash.md
+$ git commit
+ [master 88afe0e] Merge branch 'testing'
+ // 成功解决了合并中的冲突, 并提交了更改
+$ git branch -d testing					// 删除不再使用的测试 testing 分支
+ Deleted branch testing (was bf0e015).
 ```
 
+------
+
+
+
+### ✏️ Git 日志
+
+回顾提交历史, 使用 `log` 指令:
+
+```
+$ git log								// 紧接着使用 q 退出当前日志
+```
+
+<div align="center"> <img src="https://i1.fuimg.com/719027/60f7add1eb1423f8.png" width=""> </div><br>
+
+```
+$ git log --oneline						// 查看历史记录的简洁版本
+```
+
+<div align="center"> <img src="https://i2.tiimg.com/719027/b8d7463db3eb3300.png" width=""> </div><br>
+
+在此, 整个项目的开发历史, 一目了然!
+
+还可以使用 --graph ( 开启拓扑图 ) 选项, 查看项目中的分支、合并情况
+
+```
+$ git log --graph
+```
+
+<div align="center"> <img src="https://i2.tiimg.com/719027/4196b07c17d402f4.png" width=""> </div><br>
+
+- 更多的 `log` 参数
+
+  - `--reverse` : 逆向显示所有日志
+
+  ```
+  $ git log --reverse --oneline
+  ```
+
+  - `--author` : Git 源码中 <user.name> 所提交的部分
+
+  ```
+  $ git log --author=93LifeAfterLife --oneline -5  			// 显示五行我自己提交的部分
+  ```
+
+  - 更多杂项可以参考 : https://git-scm.com/docs/git-log
+
+------
+
+
+
+### ✏️ Git 版本标签
+
+
+
+------
+
+
+
+### ✏️ Git 远程仓库
+
+#### 🐱 GitHub
+
+####  ⛅ Gitee
