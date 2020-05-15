@@ -2,7 +2,7 @@
 
 ###  ✏️ Git 简介
 
-<div align="center"> <img src="imgs\git.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/d03afd2c69189c17.png" width=""> </div><br>
 
 Git 是一个免费开源的分布式版本控制系统，旨在快速高效地处理不管是大型还是小型的项目的所有内容。
 
@@ -34,7 +34,7 @@ Git 是一个免费开源的分布式版本控制系统，旨在快速高效地�
 4. SVN 有全局版本号, 而 Git 没有;
 5. Git 的数据安全性 / 内容完整性要优于 SVN. 
 
-<div align="center"> <img src="..\imgs\git01.jpg" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/0d833fda6aaef0f9.jpg" width=""> </div><br>
 
 ### ✏️ Git 安装与配置
 

@@ -2,7 +2,7 @@
 
 ###  ✏️Docsify简介
 
-<div align="center"> <img src="imgs\docsify.svg" width=""> </div><br>
+<div align="center"> <img src="imgs_backup\docsify.svg" width=""> </div><br>
 
 Docsify 是一个动态生成文档网站的工具, 它会在运行时将 .md 文件转为 .html 文件, 而非静态生成方式 ( 如GitBook、Hexo ). 这样的好处在于, 无需生成大量 .html 文件污染 commit 记录, 仅需要创建一个 index.html 即可开始专注于文档的编写, 并直接部署在 GitHub Pages.
 
@@ -26,7 +26,7 @@ Docsify 是一个动态生成文档网站的工具, 它会在运行时将 .md �
 npm i docsify-cli -g
 ```
 
-<div align="center"> <img src="imgs\docsify01.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/f397cda9c95d4700.png" width=""> </div><br>
 
 查看已安装的 docsify 客户端版本 ( 截止*2020年5月14日*, 最新版为 v4.4.0 ) :
 
@@ -34,7 +34,7 @@ npm i docsify-cli -g
 npm list docsify-cli -g
 ```
 
-<div align="center"> <img src="imgs\docsify02.png"> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/bb2ebe8a3e615215.png"> </div><br>
 
 :point_right: 如果你还不够了解 **npm** , 可以查看我的文档 [npm]( Nodejs入门.md )
 
@@ -50,7 +50,7 @@ docsify init ./docs              // 在 ./docs 子目录下编写文档, 进行�
 
 此命令会在本地创建 docsify 的文件仓库.
 
-<div align="center"> <img src="imgs\docsify03.png"> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/997e7e256155bbbe.png"> </div><br>
 
 - `index.html` : 入口文件
 - `README.md` : 主页
