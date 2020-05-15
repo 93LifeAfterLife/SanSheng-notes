@@ -7,7 +7,7 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
 
   <!-- 将自定义样式放在 Github 上会导致加载速度变得非常慢，所以采取直接内嵌的方式 -->
   <style type="text/css">
@@ -161,6 +161,8 @@
     }
     </style>
     <style type="text/css">
+    
+    
     /**
  * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
  * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
@@ -409,6 +411,7 @@
 </head>
 <body>
   <div id="app"></div>
+  <div id="dark_mode"></div>
   <script>
     window.$docsify = {
       name: '叁昇の笔记',
@@ -431,5 +434,13 @@
   <!-- Click to copy -->
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
   <!-- prism插件 待开发 -->
+  <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-java.min.js"></script>
+  <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-c.min.js"></script>
+  <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-bash.min.js"></script>
+  <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-sql.min.js"></script>
+  <!-- 图片样式 -->
+  <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/zoom-image.min.js"></script>
+  <!-- 黑夜主题 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/index.js"></script> -->
 </body>
 </html>
