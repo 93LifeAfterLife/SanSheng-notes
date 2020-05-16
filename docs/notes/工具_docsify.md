@@ -70,7 +70,7 @@ docsify serve docs
 
 在浏览器中打开地址 : http://localhost:3000/ 
 
-<div align="center"> <img src="imgs\docsify04.png"> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/fc45a89197f7fcf8.png"> </div><br>
 
 
 

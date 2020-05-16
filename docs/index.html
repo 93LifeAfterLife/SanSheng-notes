@@ -11,7 +11,7 @@
   <link rel="shortcut icon" href="https://i1.fuimg.com/719027/82a413d81b55733c.png">
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
 
-  <!-- 将自定义样式放在 Github 上会导致加载速度变得非常慢，所以采取直接内嵌的方式 -->
+  <!-- 使用外部样式在 Github 上会导致加载速度变得非常慢，所以采取直接内嵌的方式 -->
   <style type="text/css">
     	
     /* 隐藏头部的目录 */
@@ -413,36 +413,38 @@
 </head>
 <body>
   <div id="app"></div>
-  <div id="dark_mode"></div>
+  <!-- <div id="dark_mode"></div> -->
+
+  <!-- 激活docsify模块 -->
   <script>
-    window.$docsify = {
-      name: '叁昇の笔记',
-      repo: 'https://github.com/93LifeAfterLife/SanSheng-notes',
-      coverpage: true,
-      //maxAge: 100,
-      //search: 'auto',   //默认值
-      search: {
-          paths: 'auto',
-          placeholder: '🔍 查询文档 ',
-          noData: '😞 抱歉, 没有找到! ',
-          depth: 6
-      } 
+      window.$docsify = {
+        maxAge: 100,
+        name: '叁昇の笔记',
+        repo: 'https://github.com/93LifeAfterLife/SanSheng-notes',
+        search: {
+            paths: 'auto',
+            placeholder: '🔍 Type to search ',
+            noData: '😞 No Results! ',
+            depth: 6
+        },
+        coverpage: true
     }
   </script>
+
   <!-- docsify基础插件 -->
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <!-- 全文检索插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <!-- Click to copy -->
+  <script src="https://cdn.bootcss.com/docsify/4.5.9/plugins/search.min.js"></script>
+  <!-- 代码剪切板 -->
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
-  <!-- prism插件 待开发 -->
+  <!-- prism代码高亮插件, 待开发, 参考cys2018作者的qcloud -->
   <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-java.min.js"></script>
   <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-c.min.js"></script>
   <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-bash.min.js"></script>
   <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/prism-sql.min.js"></script>
-  <!-- 图片样式 -->
-  <script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/zoom-image.min.js"></script>
-  <!-- 黑夜主题 -->
+  <!-- 图片点击缩放 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 黑夜主题, 未使用 -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/index.js"></script> -->
 </body>
 </html>
