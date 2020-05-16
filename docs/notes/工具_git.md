@@ -34,7 +34,7 @@ Git 是一个免费开源的分布式版本控制系统，旨在快速高效地�
 4. SVN 有全局版本号, 而 Git 没有;
 5. Git 的数据安全性 / 内容完整性要优于 SVN. 
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/0d833fda6aaef0f9.jpg" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/0d833fda6aaef0f9.jpg" width="350px"> </div><br>
 
 ​																				*图片转载自菜鸟教程*
 
@@ -105,7 +105,7 @@ $ git clone <repo> <directory>				// 拷贝到指定的目录下
 
 假如我要拷贝此项目到本地目录下进行管理, 有如下几种协议方式, 你可以在 GitHub 的这里看到:
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/a309ac7c0f24e23a.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/a309ac7c0f24e23a.png" width="350px"> </div><br>
 
 ```
 $ git clone git@github.com:93LifeAfterLife/rabbitmq.git		   	// SSH 协议
@@ -127,7 +127,7 @@ git 把需要用来进行版本控制的本地文件目录称作为一个 `仓�
 
 #### ⛪ Git 仓库的结构
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/67189a824cb86208.png" width=""> </div><br>
+<div align="center"> <img src="https://i1.fuimg.com/719027/67189a824cb86208.png" width="350px"> </div><br>
 
 说明:
 
@@ -170,7 +170,7 @@ git commit -m "<commit message>"
 git push origin master
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/0ca8d7dc8faa0e1b.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/0ca8d7dc8faa0e1b.png" width="350px"> </div><br>
 
 如上图所示, 即是我更新当前文档时的 Git 代码提交流程.
 
@@ -224,7 +224,7 @@ $ git status --short						// 同 -s
 
 常见的状态码, 如下图:
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/e3ff5c8124abb5ec.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/e3ff5c8124abb5ec.png" width="350px"> </div><br>
 
 M 标记在第二个位置, 表示 `工具_git.md` 文档被修改了, 但是还没有被放入暂存区
 
@@ -238,7 +238,7 @@ M 标记在第二个位置, 表示 `工具_git.md` 文档被修改了, 但是还
 $ git add <filename>
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/06e22832eee81584.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/06e22832eee81584.png" width="350px"> </div><br>
 
 add 后的文件将进入暂存区, 显示为 第一个位置的 A.
 
@@ -307,7 +307,7 @@ $ git diff HEAD
 $ git diff -stat
 ```
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/9b1e0a86746659ab.png" width=""> </div><br>
+<div align="center"> <img src="https://i1.fuimg.com/719027/9b1e0a86746659ab.png" width="350px"> </div><br>
 
 ------
 
@@ -435,13 +435,13 @@ $ git branch -d testing					// 删除不再使用的测试 testing 分支
 $ git log								// 紧接着使用 q 退出当前日志
 ```
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/60f7add1eb1423f8.png" width=""> </div><br>
+<div align="center"> <img src="https://i1.fuimg.com/719027/60f7add1eb1423f8.png" width="350px"> </div><br>
 
 ```
 $ git log --oneline						// 查看历史记录的简洁版本
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/b8d7463db3eb3300.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/b8d7463db3eb3300.png" width="350px"> </div><br>
 
 在此, 整个项目的开发历史, 一目了然!
 
@@ -451,7 +451,7 @@ $ git log --oneline						// 查看历史记录的简洁版本
 $ git log --graph
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/4196b07c17d402f4.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/4196b07c17d402f4.png" width="350px"> </div><br>
 
 - 更多的 `log` 参数
 
@@ -521,7 +521,7 @@ $ ssh-keygen -t rsa -C "tangdingjnust@163.com"
 
    选择 `SSH and GPG keys`, 点击 `New SSH key` 按钮, `title` 随意填写, `key` 为刚才所复制的, 就完成了本地与远程的连接验证了. 当然, 你可以多台客户端同时申请连接, 为自己布下工作网.
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/ea1de85a0004ac10.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/ea1de85a0004ac10.png" width="350px"> </div><br>
 
 4. 验证是否成功: 
 
@@ -545,11 +545,11 @@ $ git remote -v				// 查看实际链接地址以及他们的别名 ( fetch, pus
 
 - `fetch & merge` 提取远程仓库
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/5d5d57810062b127.png" width="300px"> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/5d5d57810062b127.png" width="350px"> </div><br>
 
 1. 在此之前, 我提前在 github 下新建一个仓库 `New repository`, 名称为 `test-git`, 其他选项保持默认. 点击 `create repository`, 会进入引导页面, 引导用户如何拉取到本地
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/5a70003fd8ff0296.png" width="300px"> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/5a70003fd8ff0296.png" width="350px"> </div><br>
 
 2. 在本地选择一个仓库目录, 创建本地仓库, 并将本地库中所修改的文件提交到远程仓库中
 
@@ -571,7 +571,7 @@ $ git push -u origin master
 
 3. 刷新页面, 查看 github 上仓库的变化, 会发现已然通过本地 Git 进行了远程仓库的更新了!
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/1fe45858709dc2c4.png" width=""> </div><br>
+<div align="center"> <img src="https://i2.tiimg.com/719027/1fe45858709dc2c4.png" width="350px"> </div><br>
 
 4. 直接在 GitHub 上在线修改代码, 点击右上角的 '✏' ( 编辑 ) 按钮
 
