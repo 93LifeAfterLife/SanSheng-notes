@@ -691,3 +691,16 @@ Checking connectivity... done.
 
 <div align="center"> <img src="https://i1.fuimg.com/719027/4d889d6db54526a1.png" width=""> </div><br>
 
+------
+
+
+
+### 🚦 更新补充 & FAQ
+
+#### 👉 git clone 速度太慢?
+
+// To do 参考: https://www.jianshu.com/p/3f6477049ece 更改 DNS 的方法
+
+#### 👉 STS / Eclipse & IDEA 中的 Git 操作
+
+// To do 实际应用更多, 视图化操作更便捷
