@@ -279,14 +279,6 @@ rm 删除同 Linux 指令, 为了安全, 可以不了解; 而且日常工作中�
 
 
 
-### ✏️ Git push
-
-type here
-
-------
-
-
-
 ### ✏️ Git diff
 
 上面的 `status` 旨在查看文件变化, 而更加详细到文件内代码的变化, 则需使用 `diff` 指令
@@ -475,6 +467,7 @@ $ git log --graph
   $ git log --author=93LifeAfterLife --oneline -5  			// 显示五行我自己提交的部分
   ```
 
+  - `--decorate` : 可以查看标签
   - 更多杂项可以参考 : https://git-scm.com/docs/git-log
 
 ------
@@ -483,7 +476,23 @@ $ git log --graph
 
 ### ✏️ Git 版本标签
 
+如果在项目构建过程中, 达到一个重要的阶段, 并希望记录下当前的提交快照, 可以将这个快照称作一个 "版本", 这时, 可以使用 `tag` 给这份快照打上标签.
 
+```
+$ git tag -a v1.0.0						// -a 表示创建一个带注解的标签, 推荐使用注解!
+$ git log --decorate --oneline --graph 	// 以简约格式查看带有标签的分支合并拓扑图
+$ git tag 								// 查看所有标签
+$ git tag -d v0.9.0						// 删除标签
+$ git show v1.0.0						// 查看此版本所修改的全部内容
+```
+
+如果忘记给某个提交打上标签, 可以追加标签:
+
+```
+$ git tag -a v1.0.1 3e92c19				// 3e92c19 是 commit 号, 用标签来代替, 便于寻找
+```
+
+由此可见, `tag` 实际上就是指向某个 `commit` 的指针, `tag` 是无法移动的, 一旦创建或删除都是立刻执行的!
 
 ------
 
@@ -491,6 +500,194 @@ $ git log --graph
 
 ### ✏️ Git 远程仓库
 
+如上所有的 Git 操作都是在本地的客户端内进行的, 如果你想通过 Git 来分享代码或者与团队协作, 则还需要将仓库放到所有人或特定成员都能访问到的服务器端. 比较常用的远程仓库有 `GitHub` 和 `Gitee` ( 码云 ).
+
 #### 🐱 GitHub
 
+首先, 确保已注册了一个 `GitHub` 账号, 并且将本地 Git 仓库和远程 GitHub 仓库通过SSH协议相连通:
+
+1. GitHub 官网: https://github.com/ , 使用邮箱来注册账号, 确保邮箱是安全的, 牢记这个邮箱;
+2. 配置验证信息:
+
+```
+$ ssh-keygen -t rsa -C "tangdingjnust@163.com"
+```
+
+3. 之后会要求确认路径和输入密码, 可以一直回车, 成功就会在`~/` 根目录下 ( windows系统则在 `c/Users/Administrator/` ) 生成 `.ssh` 文件夹, 里面会创建一个 `id_rsa.pub` 文件, 编辑该文件, 复制 `key` ; 回到 github 网站, 在账户 ( `account` ) 下的设置 ( `setting` ) 里
+
+   <div align="center"> <img src="https://i2.tiimg.com/719027/bca75b9f97e3132d.png" width=""> </div><br>
+
+   
+
+   选择 `SSH and GPG keys`, 点击 `New SSH key` 按钮, `title` 随意填写, `key` 为刚才所复制的, 就完成了本地与远程的连接验证了. 当然, 你可以多台客户端同时申请连接, 为自己布下工作网.
+
+<div align="center"> <img src="https://i2.tiimg.com/719027/ea1de85a0004ac10.png" width=""> </div><br>
+
+4. 验证是否成功: 
+
+```
+$ ssh -T git@github.com
+ // 设置好 ssh 后可以看到以下信息
+ Hi 93LifeAfterLife! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+##### ✈ Git远程操作
+
+- `remote` 查看远程仓库
+
+```
+$ git remote
+ origin
+$ git remote -v				// 查看实际链接地址以及他们的别名 ( fetch, push )
+ origin  https://github.com/93LifeAfterLife/SanSheng-notes.git (fetch)
+ origin  https://github.com/93LifeAfterLife/SanSheng-notes.git (push)
+```
+
+- `fetch & merge` 提取远程仓库
+
+<div align="center"> <img src="https://i2.tiimg.com/719027/5d5d57810062b127.png" width="300px"> </div><br>
+
+1. 在此之前, 我提前在 github 下新建一个仓库 `New repository`, 名称为 `test-git`, 其他选项保持默认. 点击 `create repository`, 会进入引导页面, 引导用户如何拉取到本地
+
+<div align="center"> <img src="https://i2.tiimg.com/719027/5a70003fd8ff0296.png" width="300px"> </div><br>
+
+2. 在本地选择一个仓库目录, 创建本地仓库, 并将本地库中所修改的文件提交到远程仓库中
+
+<div align="center"> <img src="https://i2.tiimg.com/719027/df2891ba6ec90098.png" width="350px"> </div><br>
+
+所有代码如下, 你可以快捷复制进行操作:
+
+```
+$ mkdir HelloGit
+$ cd HelloGit
+$ echo "# Title: git remote testing" >> README.md
+$ ls
+$ git init
+$ git add README.md
+$ git commit -am "2020年5月16日09:54:09 添加一个说明文件"
+$ git remote add origin git@github.com:93LifeAfterLife/test-git.git    # 填写自己的仓库, 使用 SSH 协议连接方式
+$ git push -u origin master
+```
+
+3. 刷新页面, 查看 github 上仓库的变化, 会发现已然通过本地 Git 进行了远程仓库的更新了!
+
+<div align="center"> <img src="https://i2.tiimg.com/719027/1fe45858709dc2c4.png" width=""> </div><br>
+
+4. 直接在 GitHub 上在线修改代码, 点击右上角的 '✏' ( 编辑 ) 按钮
+
+​       加上一行 '## 在github上在线修改了文件'
+
+5. 再在本地来更新
+
+```
+$ git fetch origin
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 693 bytes | 22.00 KiB/s, done.
+From github.com:93LifeAfterLife/test-git
+   00a08e2..8bfb92b  master     -> origin/master
+```
+
+  **注意: **`master -> origin/master` 表示从名为 `origin` 的远程上拉取名为 `master` 的分支, 到本地分支 `origin/master` 中! 需要严格指明远程名! 当然, 可以一次性拉取多个分支代码!
+
+```
+$ git merge origin/master
+Updating 00a08e2..8bfb92b
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+ 
+$ cat readme.md
+# Title: git remote testing
+## 在github上在线修改了文件
+```
+
+  **注意: ** `merge origin/master` 表示合并名为 `origin/master` 的分支到当前所在分支, 与远程名无关, 需要指定的是被合并的分支! 当然, 可以一次性合并多个分支代码!
+
+
+
 ####  ⛅ Gitee
+
+同理于 Gihub , 操作完全类似! 更适合国内环境, 而且5人以下团队的代码托管完全免费!
+
+你可以访问: https://gitee.com/signup?from=homepage , 注册使用.
+
+
+
+####  🏰 搭建自己的私有服务器
+
+以 `CentOS` 所包装的 `Linux` 系统为例, 首先确保已然安装 Git 依赖与 Git 客户端. 
+
+目前我并没有个人搭建过 git 服务器, 使用的都是既定的服务器. 以下流程来源于菜鸟教程, 供参考学习
+
+```
+$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
+$ yum install git
+```
+
+1. 创建一个 git 用户组和用户, 用来运行 git 服务
+
+```
+$ groupadd git
+$ useradd git -g git
+```
+
+2. 创建证书登陆
+
+收集所有需要登录的用户的公钥，公钥位于 `id_rsa.pub` 文件中，把我们的公钥导入到 `/home/git/.ssh/authorized_keys` 文件里，一行一个。
+
+如果没有该文件创建它：
+
+```
+$ cd /home/git/
+$ mkdir .ssh
+$ chmod 755 .ssh
+$ touch .ssh/authorized_keys
+$ chmod 644 .ssh/authorized_keys
+```
+
+3. 初始化 git 仓库
+
+首先我们选定一个目录作为Git仓库，假定是 ` /home/gitrepo/runoob.git` ，在 `/home/gitrepo` 目录下输入命令：
+
+```
+$ cd /home
+$ mkdir gitrepo
+$ chown git:git gitrepo/
+$ cd gitrepo
+
+$ git init --bare runoob.git
+Initialized empty Git repository in /home/gitrepo/runoob.git/
+```
+
+以上命令Git创建一个空仓库，服务器上的 Git 仓库通常都以 `.git` 结尾。然后，把仓库所属用户改为git：
+
+```
+$ chown -R git:git runoob.git
+```
+
+4. 克隆仓库
+
+```
+$ git clone git@192.168.45.4:/home/gitrepo/runoob.git
+Cloning into 'runoob'...
+warning: You appear to have cloned an empty repository.
+Checking connectivity... done.
+```
+
+192.168.45.4 为 Git 所在服务器 ip ，你需要将其修改为你自己的 Git 服务 ip。
+
+这样我们的 Git 服务器安装就完成 !
+
+
+
+### ✏️ 结语
+
+感谢你的查阅, 欢迎 star 我的 github 开源仓库! 或者关注我的个人公众号! 
+
+[![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
+
+<div align="center"> <img src="https://i1.fuimg.com/719027/4d889d6db54526a1.png" width=""> </div><br>
+
