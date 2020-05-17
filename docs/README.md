@@ -56,3 +56,7 @@
 - [PPT](notes/设计_powerpoint.md) </br>
 - [SU](notes/设计_sketchup.md) </br>
 - [CAD](notes/设计_autocad.md) </br>
+
+## 🎨 计划
+
+- [建站计划](notes/计划_建站计划.md) </br>
