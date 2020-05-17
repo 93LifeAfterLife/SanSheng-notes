@@ -1,5 +1,14 @@
 #  📔 项目管理工具-Git
 
+### ✏️ 前言
+
+作者 : 叁昇 ( 93LifeAfterLife ) 	[![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
+公众号:
+
+<div align="center"> <img src="https://i1.fuimg.com/719027/ca0c1d25208ae899.jpg" width="350px"> </div><br>纠错请联系工作邮箱 : tangdingjnust@163.com
+
+
+
 ###  ✏️ Git 简介
 
 <div align="center"> <img src="https://i2.tiimg.com/719027/d03afd2c69189c17.png" width=""> </div><br>
@@ -689,7 +698,7 @@ Checking connectivity... done.
 
 [![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/4d889d6db54526a1.png" width=""> </div><br>
+<div align="center"> <img src="https://i1.fuimg.com/719027/ca0c1d25208ae899.jpg" width=""> </div><br>
 
 ------
 

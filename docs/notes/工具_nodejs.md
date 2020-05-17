@@ -1,6 +1,14 @@
 # :paperclip:Node.js
 
-### :pencil2:node.js 简介
+### ✒ 前言
+作者 : 叁昇 ( 93LifeAfterLife ) 	[![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
+公众号:
+
+<div align="center"> <img src="https://i1.fuimg.com/719027/ca0c1d25208ae899.jpg" width="350px"> </div><br>纠错请联系工作邮箱 : tangdingjnust@163.com
+
+
+
+### ✏ node.js 简介
 
 <img src="https://i1.fuimg.com/719027/0d30b6b68bbdf4bc.png" style="width: 250px; background: rgb(51,51,51)" />
 
@@ -8,7 +16,7 @@
 
 
 
-### :pencil2:node.js 安装与配置
+### ✏ node.js 安装与配置
 
 windows 本地下载安装 Node.js : http://nodejs.cn/download/
 
@@ -22,7 +30,7 @@ node -v
 
 
 
-### :pencil2:创建第一个应用
+### ✏ 创建第一个应用
 
 - 使用 node.js 时, 我们不仅仅是实现一个应用, 同时还实现了整个 HTTP 服务器.
 
@@ -63,7 +71,7 @@ node hello.js
 
 
 
-### :pencil2:npm 简介
+### ✏ npm 简介
 
 - npm ( node package manager for JavaScript ) 是 Node.js 附带的包管理工具, 允许用户从 npm 服务器下载他人编写的第三方包到本地使用, 也允许用户上传自己的应用到 npm 服务器供他人使用.
 
@@ -96,7 +104,7 @@ var module = require('Module Name/Package Name')
 
 
 
-### :pencil2:npm 常用指令
+### ✏ npm 常用指令
 
 ```java
 npm help <command>                     // 查看某条指令的详细帮助 
@@ -120,9 +128,19 @@ npm unpublish <Module Name>@<Version>  // 撤销发布指定版本模块
 
 
 
-### :pencil2:npm 版本号
+### ✏ npm 版本号
 
 - npm 使用语义版本号来管理代码, 其代表含义为 : ***主版本号.次版本号.补丁版本号***
 
 仅修复bug, 只需更新**补丁版本号**; 新增功能但能向下兼容, 则更新**次版本号**; 若发生大变动, 不能向下兼容, 则**更新主版本号**.
 
+
+
+### ✒ 结语
+感谢你的查阅, 欢迎 star 我的 github 开源仓库! 或者关注我的个人公众号! 
+
+[![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
+
+<div align="center"> <img src="https://i1.fuimg.com/719027/ca0c1d25208ae899.jpg" width=""> </div><br>
+
+### ✒ 更新补充 & FAQ
