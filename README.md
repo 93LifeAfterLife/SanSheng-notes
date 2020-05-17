@@ -30,13 +30,13 @@
 ## 🚀 互联网架构
 - [单点登录](notes/架构_sso.md) </br>
 - [权限管理](notes/架构_权限管理.md) </br>
-- [并发优化](notes/架构_并发优化.md) </br>
+- [并发优化](notes/架构_并发优化_目录.md) </br>
 - [定时任务](notes/架构_定时任务.md) </br>
 - [微服务](notes/架构_微服务.md) </br>
 - [消息队列](notes/架构_消息队列.md) </br>
 - [全文检索](notes/架构_全文检索.md) </br>
 
-## 💎 探索大数据
+## 💎 大数据
 - [搭建环境](notes/大数据_环境.md) </br>
 - [数据清洗](notes/大数据_数据清洗.md) </br>
 - [图形展示](notes/大数据_图形展示.md) </br>
@@ -46,18 +46,13 @@
 - [爬虫](notes/应用技术_爬虫.md) </br>
 
 ## 🔨 工具
-- [Emoji符号大全](notes/工具_emoji.md) </br>
-- [网址大全](notes/工具_websites.md) </br>
-- [色彩搭配表](notes/工具_colors.md) </br>
 - [Git](notes/工具_git.md) </br>
 - [Docsify](notes/工具_docsify.md) </br>
 - [Node.js](notes/工具_nodejs.md) </br>
+- [色彩搭配表](notes/工具_colors.md) </br>
 
 ## 📐 爱好: 设计软件
-- [Ps](notes/设计_photoshop.md) </br>
-- [Pr](notes/设计_premiere.md) </br>
-- [Ae](notes/设计_after_effects.md) </br>
-- [Ai](notes/设计_illustrator.md) </br>
+- [Adobe 全家桶](notes/设计_adobe全家桶_目录.md) </br>
 - [PPT](notes/设计_powerpoint.md) </br>
 - [SU](notes/设计_sketchup.md) </br>
 - [CAD](notes/设计_autocad.md) </br>
