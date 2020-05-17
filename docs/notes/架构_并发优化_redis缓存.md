@@ -181,5 +181,5 @@ redis-cli
 
 ### ↪ List 类型
 
-- Redis 
+- Redis 中的 List 集合是双向循环链表, 
 
