@@ -2,6 +2,7 @@
 - [Windows](notes/计算机基础_windows.md) </br>
 - [Linux](notes/计算机基础_linux.md) </br>
 - [计算机网络](notes/计算机基础_网络.md) </br>
+- [数据结构与算法分析](notes/计算机基础_数据结构与算法分析.md) </br>
 
 ## 💾 MySQL数据库
 - [数据库系统原理](notes/mysql_数据库系统原理) </br>
@@ -47,6 +48,7 @@
 
 ## 🔨 工具
 - [Git](notes/工具_git.md) </br>
+- [Markdown](notes/工具_markdown.md) </br>
 - [Docsify](notes/工具_docsify.md) </br>
 - [Node.js](notes/工具_nodejs.md) </br>
 - [色彩搭配表](notes/工具_colors.md) </br>
