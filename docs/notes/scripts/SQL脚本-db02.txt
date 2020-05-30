@@ -1,0 +1,28 @@
+-- ---------------------------------------
+-- 创建 db02 库, 并初始化数据
+-- ---------------------------------------
+drop database if exists db02;
+create database db02 charset utf8mb4;
+use db02;
+create table emp(
+	id int primary key auto_increment,
+	name varchar(20),
+	sex char(1),
+	birthday date,
+	dept varchar(20),
+	job varchar(20),
+	sal double,
+	bonus double
+);
+
+-- 往 emp 员工表中插入数据
+insert into emp values(null,'壹壹','男','1995-03-25','研发部','开发工程师','1800','300');
+insert into emp values(null,'贰贰','男','1994-04-26','研发部','开发工程师','2500','600');
+insert into emp values(null,'叁叁','女','1996-06-14','研发部','开发工程师','1400','300');
+insert into emp values(null,'肆肆','男','1991-05-18','研发部','开发工程师','4200','500');
+insert into emp values(null,'伍伍','男','1993-02-18','研发部','产品经理','1600','500');
+insert into emp values(null,'陆陆','女','1998-07-18','测试部','测试员','3700','600');
+insert into emp values(null,'柒柒','男','1995-08-18','测试部','测试员','4850','400');
+insert into emp values(null,'捌捌','男','1999-03-18','测试部','测试员','3200','600');
+insert into emp values(null,'玖玖','男','1990-04-18','测试部','测试员','2700','400');
+insert into emp values(null,'拾拾','男','1980-05-18',null,'CEO','50000',null);

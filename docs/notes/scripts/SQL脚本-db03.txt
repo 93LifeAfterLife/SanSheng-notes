@@ -1,0 +1,29 @@
+-- --------------------------------------------------
+-- 创建 db03 库
+-- --------------------------------------------------
+drop database if exists db03;
+create database db03 charset utf8;
+use db03;
+
+create table dept(
+	id int primary key auto_increment,	-- 部门编号
+	name varchar(20)					-- 部门名称
+);
+
+-- 往部门表中插入记录
+insert into dept values(null, '财务部');
+insert into dept values(null, '人事部');
+insert into dept values(null, '科技部');
+insert into dept values(null, '销售部');
+
+create table emp(
+	id int primary key auto_increment,	-- 员工编号
+	name varchar(20),					-- 员工姓名
+	dept_id int							-- 部门编号
+);
+
+-- 往员工表中插入记录
+insert into emp values(null, '张三', 1);
+insert into emp values(null, '李四', 2);
+insert into emp values(null, '王五', 3);
+insert into emp values(null, '赵六', 5);
