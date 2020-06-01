@@ -66,19 +66,19 @@ create table user(
 
 3. 日期类型
 
-| 类型      | 格式                | 范围                                      | 存储   |
-| --------- | ------------------- | ----------------------------------------- | ------ |
-| YEAR      | YYYY                | 1901 ~ 2144                               | 1 byte |
-| TIME      | HH:MM:SS            | -838:59:59 ~  838:59:59                   | 3 byte |
-| DATE      | YYYY-MM-DD          | 1000-01-01 ~ 9999-12-31                   | 3 byte |
-| DATETIME  | YYYY-MM-DD HH:MM:SS | 1000-01-01 00:00:00 ~ 9999-12-31 23:59:59 | 8 byte |
-| TIMESTAMP | YYYY-MM-DD HH:MM:SS | 1970-01-01 00:00:01 ~ 2038-01-19 03:14:07 | 4 byte |
+| 类型      | 格式                    | 范围                                          | 存储   |
+| --------- | ----------------------- | --------------------------------------------- | ------ |
+| YEAR      | YYYY                    | 1901 ~ 2144                                   | 1 byte |
+| TIME      | HH: MM: SS              | -838: 59: 59 ~  838: 59: 59                   | 3 byte |
+| DATE      | YYYY-MM-DD              | 1000-01-01 ~ 9999-12-31                       | 3 byte |
+| DATETIME  | YYYY- MM- DD HH: MM: SS | 1000-01-01 00: 00: 00 ~ 9999-12-31 23: 59: 59 | 8 byte |
+| TIMESTAMP | YYYY- MM- DD HH: MM: SS | 1970-01-01 00: 00: 01 ~ 2038-01-19 03: 14: 07 | 4 byte |
 
 ❗ 注意 `datetime` 和 `timestamp` 的区别 :
 
 相同点是, 它们俩都是相同格式, 即 "年月日 时分秒", 不同点是 : 
 
-①. datetime 底层存储的就是 "年月日 时分秒", 占 8 byte ; 但 timestamp 存储的是从 1970-01-01 00:00:00 ( 格林威治时间 ) 开始到当前时间的时间毫秒值, 底层是 int , 占 4 byte, 但是显示还是会转换为 "年月日 时分秒";
+①. datetime 底层存储的就是 "年月日 时分秒", 占 8 byte ; 但 timestamp 存储的是从 1970-01-01 00: 00: 00 ( 格林威治时间 ) 开始到当前时间的时间毫秒值, 底层是 int , 占 4 byte, 但是显示还是会转换为 "年月日 时分秒";
 
 ②. datetime 默认值是 null , 常运用在记录固定时间, 比如 birthday 等; timestamp ( 时间戳 ) 默认值是当前时间, 在插入与修改时, 若不填值, 则默认自动更新为系统当前时间, 常运用在记录时间更改方面, 比如 createtime / updatetime ;
 
@@ -207,9 +207,10 @@ create table user(
 > insert into emp values(null, '肆肆', 3);
 > insert into emp values(null, '伍伍', 4);
 > insert into emp values(null, '陆陆', 4);
+> -- ------------- 执行完毕 -------------------
 > ```
 >
-> 你可以直接访问, 下载文件 :  [SQL脚本-db01](scripts/SQL脚本-db01.txt)
+> 你可以在我的github上查看源文件 :  <a href="https://github.com/93LifeAfterLife/SanSheng-notes/tree/master/docs/notes/scripts" target="_blank">点击查看db01脚本</a>
 
 执行完后, 查看数据库和表, 显示为以下结构:
 
@@ -308,8 +309,10 @@ alter table stu add column score float;
 ```mysql
 -- 目前两位学生的分数为默认值 null, 给'壹壹'更新分数
 update stu set score = 91.5 where name = '壹壹';
+
 -- 若没有 where 条件子句, 则默认修改所有学生, 比如全体加5分
 update stu set score = score + 5;
+
 -- 特别注意, 由于表中存在 score 默认为 null, null+5 还是为 null, 则需通过 ifnull 函数将 null 的值置为 0; 这里的 ifnull(score, 0) 可以看作是一个新表, 表名就是 ifnull(score, 0)!
 update stu set score = ifnull(score, 0) + 5;
 ```
@@ -319,6 +322,7 @@ update stu set score = ifnull(score, 0) + 5;
 ```mysql
 -- 删除 stu 表中 id=2 的学生数据
 delete from stu where id = 2;
+
 -- 删除 stu 表中的所有数据, 但是表结构还在, 表重置为空集
 delete from stu;
 ```
@@ -329,7 +333,7 @@ delete from stu;
 
 > 首先准备数据, 执行脚本( 直接复制到MySQL终端命令行中 ): 
 >
-> 点击可以直接访问, 下载文件 :  [SQL脚本-db02](scripts/SQL脚本-db02.txt)
+> 你可以在我的github上查看源文件 :  <a href="https://github.com/93LifeAfterLife/SanSheng-notes/tree/master/docs/notes/scripts" target="_blank">点击查看db02脚本</a>
 
 新建 db02, 建立 emp 表, 插入初始数据, 查询结果如下:
 
@@ -347,6 +351,7 @@ select name, sal, bonus from emp;
 ```mysql
 -- 查询 emp 表中的所有部门, 剔除重复的结果
 select distinct dept from emp;
+
 -- 查询 emp 表中的所有奖金数值, 剔除重复的结果; 重命名表 ifnull(bonus, 0) 为"奖金数值"
 select distinct ifnull(bonus, 0) as 奖金数值 from emp;		-- as 可以缺省
 ```
@@ -369,6 +374,7 @@ select distinct ifnull(bonus, 0) as 奖金数值 from emp;		-- as 可以缺省
 ```mysql
 -- 查询 emp 表中薪资大于 3000 的所有员工, 显示姓名和薪资
 select name, sal from emp where sal>3000;
+
 -- 查询 emp 表中总薪资大于 3500 的所有员工, 显示姓名和总薪资, 注意前后表名保持一致!
 select name, (sal+ifnull(bonus, 0)) as 总薪资 from emp where (sal+ifnull(bonus, 0))>3000;
 ```
@@ -378,14 +384,19 @@ select name, (sal+ifnull(bonus, 0)) as 总薪资 from emp where (sal+ifnull(bonu
 ```mysql
 -- 使用表别名查询 emp 表中的所有员工, 显示姓名和部门
 select e.name, e.dept from emp as e;				-- 同样的, as 可以缺省
+
 -- 使用属性查询 emp 表中薪资大于 3000 的所有员工, 显示姓名、职业和薪资
 select name, job, sal from emp where emp.sal>3000;
+
 -- 使用表别名+属性查询 emp 表中薪资大于 3000 的所有员工, 显示姓名、职业和薪资
 select name, job, sal from emp e where e.sal>3000;
+
 -- 查询 emp 表中姓名以"壹"开头的员工, 显示该员工的详细信息
 select * from emp where name like '壹%';
+
 -- 查询 emp 表中薪资为 1400、1600、1800 的员工, 显示员工姓名和薪资
 select name, sal from emp where sal in(1400, 1600, 1800);
+
 -- 查询 emp 表中薪资小于 2000 和 薪资大于 4000 的员工, 显示员工姓名和薪资
 select name, sal from emp where sal<2000 or sal>4000;
 ```
@@ -399,18 +410,19 @@ select name, sal from emp where sal<2000 or sal>4000;
   ```mysql
   -- 根据职位进行分组, 统计每个职位的最低薪资
   select job, min(sal) from emp group by job;
+  
   -- 筛选出薪资大于 1500 的职位
   select job, min(sal) from emp group by job having min(sal)>1500; 
-  ```
-
-  以上在进行分组后, 就无法使用 `where` , 只能用 `having` , 并放在分组之后.
-
-  还有一个区别就是, `where` 子句**不能使用列别名和聚合函数**, ( 如 count, sum, max, min, avg ... ), 而 `having` 子句中可以使用列别名和聚合函数.
-
-  究其原因, 都是因为 MySQL 语句的执行顺序导致的.
-
-  - SQL语句的书写顺序
-
+```
+  
+以上在进行分组后, 就无法使用 `where` , 只能用 `having` , 并放在分组之后.
+  
+还有一个区别就是, `where` 子句**不能使用列别名和聚合函数**, ( 如 count, sum, max, min, avg ... ), 而 `having` 子句中可以使用列别名和聚合函数.
+  
+究其原因, 都是因为 MySQL 语句的执行顺序导致的.
+  
+- SQL语句的书写顺序
+  
     | SQL书写顺序 ( 由上到下 ) | 含义                                   |
     | ------------------------ | -------------------------------------- |
     | select 列名              | 查询哪些列                             |
@@ -419,12 +431,12 @@ select name, sal from emp where sal<2000 or sal>4000;
     | group by 列名            | 按列分组                               |
     | having 子句              | 通过条件对分组后的数据进行筛选过滤     |
     | order by 列              | 按列排序                               |
-    | limit x, y               | 指定返回 y 页第 x 条记录               |
-
+  | limit x, y               | 指定返回 y 页第 x 条记录               |
   
 
-  - SQL语句的执行顺序
-
+  
+- SQL语句的执行顺序
+  
   | SQL执行顺序( 由上到下 ) |
   | ----------------------- |
   | from 表/表别名          |
@@ -433,8 +445,8 @@ select name, sal from emp where sal<2000 or sal>4000;
   | group by 列名           |
   | having 子句             |
   | order by 列             |
-  | limit x, y              |
-
+| limit x, y              |
+  
   由以上两个表可以看出, `where` 虽然写在 `select` 后, 但是 `where` 是在 `select` 之前执行的, 所以 `where` 里不能使用列别名, 因为列别名要在 `select` 里定义后才有效; 但是 `where` 可以使用表别名, 因为 `where` 在  `from` 后执行!
 
 4. 排序查询
@@ -451,6 +463,7 @@ select name, sal from emp order by sal;			-- 默认 asc 排序, 句尾的 asc �
 ```mysql
 -- 对 emp 表按照部门进行分组, 并统计每个部门的人数, 显示部门和部门人数
 select dept 部门, count(*) 部门人数 from emp group by dept;
+
 -- 查看每个部门的最高薪资
 select dept 部门,max(sal) 最高薪资 from emp group by dept;
 ```
@@ -464,6 +477,7 @@ select dept 部门,max(sal) 最高薪资 from emp group by dept;
 ```mysql
 -- 根据部门进行分组, 统计每个部门员工人数和平均薪资
 select dept 部门, count(*) 员工人数, avg(sal) 平均薪资 from emp group by dept;
+
 -- 查询 emp 表中薪资最高的员工姓名
 select name, sal from emp where sal =(
 	select max(sal) from emp
@@ -490,17 +504,19 @@ select name, sal from emp where sal =(
 ```mysql
 -- 将员工"贰贰"的薪资上涨 5.718%, 向上取整
 update emp set sal = ceil(sal*1.05718) where name='贰贰';		-- 原 2500 更新后为 2693
+
 -- 查询 emp 表中所有员工的年龄, 并按年龄降序排序, 显示姓名和年龄
 select name 姓名, year(curdate())-year(birthday) 年龄 from emp order by 年龄 desc;
+
 -- 查询 emp 表中所有在93到95年间出生的员工, 显示姓名与出生日期
 select name, birthday from emp where year(birthday) between 1993 and 1995;
 ```
 
-8. 连接查询
+8. 连接 ( 关联 ) 查询
 
 > 同样的, 首先准备数据, 执行脚本( 直接复制到MySQL终端命令行中 ): 
 >
-> 点击可以直接访问, 下载文件 :  [SQL脚本-db03](scripts/SQL脚本-db03.txt)
+> 你可以在我的github上查看源文件 :  <a href="https://github.com/93LifeAfterLife/SanSheng-notes/tree/master/docs/notes/scripts" target="_blank">点击查看db03脚本</a>
 
 <div align="center"> <img src="https://t1.picb.cc/uploads/2020/05/30/tVOqUa.png" width="400px"> </div><br>
 
@@ -517,7 +533,7 @@ from dept d inner join emp e on d.id=e.dept_id;		-- inner join ... on ... 详见
 
 查询结果为:
 
-
+<div align="center"> <img src="https://t1.picb.cc/uploads/2020/06/01/tVDeov.png" width="400px"> </div><br>
 
 ```mysql
 -- 优化结果集表头名
@@ -528,11 +544,19 @@ where d.id=e.dept_id;		-- 保证表头名没有重复的, 避免造成歧义
 
 查询结果为:
 
-
+<div align="center"> <img src="https://t1.picb.cc/uploads/2020/06/01/tVDn0D.png" width="400px"> </div><br>
 
 8. 外连接查询
 
-   ①. 左外连接查询 ( 显示左侧表中的所有记录, 若右侧表中没有对应记录, 则显示为 null )
+   ①. 内连接查询 ( 显示两表中具有映射的所有记录, 过滤 null 值 )
+
+   ```mysql
+   -- 查询所有部门以及员工, 不显示没有部门的员工
+   select * 
+   from dept d inner join emp e on d.id=e.dept_id;
+   ```
+
+   ②. 左外连接查询 ( 显示左侧表中的所有记录, 若右侧表中没有对应记录, 则显示为 null )
 
    ```mysql
    -- 查询所有部门以及员工, 若部门下没有员工, 显示 null
@@ -540,11 +564,7 @@ where d.id=e.dept_id;		-- 保证表头名没有重复的, 避免造成歧义
    from dept d left join emp e on d.id=e.dept_id;
    ```
 
-   查询结果为:
-
-   
-
-   ②. 右外连接查询 ( 与左连接相反 )
+   ③. 右外连接查询 ( 与左连接相反 )
 
    ```mysql
    -- 查询所有部门以及员工, 若员工没有所属部门, 显示 null
@@ -552,13 +572,114 @@ where d.id=e.dept_id;		-- 保证表头名没有重复的, 避免造成歧义
    from dept d right join emp e on d.id=e.dept_id;
    ```
 
-   查询结果为:
+   以上两种查询结果为:
 
-   
+   <div align="center"> <img src="https://t1.picb.cc/uploads/2020/06/01/tVDuci.png" width="400px"> </div><br>
 
 9. 子查询
 
+子查询, 顾名思义, 即是将一个查询得到的结果作为另一个查询的条件; 也可以看作是一个查询得到了一张新的整理好的表, 再在此表的基础上进行查询.
 
+> 准备数据, 执行脚本( 直接复制到MySQL终端命令行中 ): 
+>
+> 你可以在我的github上查看源文件 :  <a href="https://github.com/93LifeAfterLife/SanSheng-notes/tree/master/docs/notes/scripts" target="_blank">点击查看db04脚本</a>
+
+执行完后进行查询, 得到的表记录如下: 
+
+<div align="center"> <img src="https://t1.picb.cc/uploads/2020/06/01/tVDSQF.png" width="400px"> </div><br>
+
+```mysql
+-- 列出薪资比"王壹壹"高的所有员工, 显示姓名和薪资
+select name, sal
+from emp 
+where sal>(
+select sal from emp where name="王壹壹"		-- 单引号和双引号均可
+);
+
+-- 列出与'刘肆肆'从事相同职位的所有员工, 显示姓名、职位以及部门
+-- 这次的查询结果涉及到两张表, 可以分三步梳理查询逻辑:
+-- 1. 先关联查询两张表, 得到员工以及员工对应的部门的结果集/表
+select e.name, e.job, d.name from emp e, dept d where e.dept_id=d.id;
+-- 2. 再查询'刘肆肆'的职位
+select job from emp where name='刘肆肆';
+-- 3. 使用子查询
+select e.name 员工姓名, e.job 职位, d.name 部门名
+from emp e, dept d
+where e.dept_id=d.id and job=(
+select job from emp where name='刘肆肆'
+);
+```
+
+查询结果: 
+
+<div align="center"> <img src="https://t1.picb.cc/uploads/2020/06/01/tVEVXX.png" width="400px"> </div><br>
+
+```mysql
+-- 列出薪资高于'运营部'最高薪资的所有员工的姓名、薪资以及部门名
+-- 分析:
+-- 1. 查询'运营部'的部门编号
+select id from dept where name='运营部';
+-- 2. 根据部门编号查询'运营部'的最高薪资
+select max(sal) from emp where dept_id=(
+select id from dept where name='运营部'
+);
+-- 3. 关联查询, 获得结果
+select e.name 员工姓名, e.sal 薪资, d.name 部门名
+from emp e, dept d
+where e.dept_id=d.id and sal>(
+	select max(sal) from emp where dept_id=(
+		select id from dept where name='运营部'
+	)
+);
+```
+
+查询结果为:
+
+<div align="center"> <img src="https://t1.picb.cc/uploads/2020/06/01/tVEc2T.png" width="400px"> </div><br>
+
+10. 查询练习
+
+```mysql
+-- (外连接) 列出所有部门和其下的员工, 如果部门下没有员工, 显示null
+
+```
+
+查询结果: 
+
+```mysql
+-- (关联查询) 列出在'测试部'任职的所有员工的详细信息
+
+```
+
+查询结果:
+
+```mysql
+-- (自连接) 列出所有员工及其直接上级, 显示员工的姓名、上级的编号与姓名
+```
+
+查询结果:
+
+```mysql
+-- (分组、聚合函数) 列出最低薪资大于1500的各种职位, 显示职位和该职位的最低薪资
+```
+
+查询结果:
+
+```mysql
+-- (分组、组合函数) 列出在每个部门就职的员工数量、平均工资, 显示部门编号、员工数量以及平均薪资
+```
+
+查询结果:
+
+```mysql
+-- (分组、关联、聚合函数) 查询至少有一个员工的部门, 显示部门编号、名称、位置以及人数
+```
+
+查询结果:
+
+```mysql
+-- (自连接) 列出受雇日期早于直接上级的所有员工的编号、姓名以及部门名
+```
 
 
 

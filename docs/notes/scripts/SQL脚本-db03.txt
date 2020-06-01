@@ -27,3 +27,5 @@ insert into emp values(null, '张三', 1);
 insert into emp values(null, '李四', 2);
 insert into emp values(null, '王五', 3);
 insert into emp values(null, '赵六', 5);
+
+-- ------------- 执行完毕 -------------------

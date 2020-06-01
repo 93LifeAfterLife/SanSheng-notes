@@ -1,0 +1,47 @@
+-- --------------------------------------------------
+-- 创建db40库
+-- --------------------------------------------------
+drop database if exists db04;
+create database db04 charset utf8mb4;
+use db04;
+
+create table dept(				-- 创建部门表
+	id int primary key,			-- 部门编号
+	name varchar(20),			-- 部门名称
+	loc varchar(20)				-- 部门位置
+);
+
+create table emp(				-- 创建员工表
+	id int primary key,			-- 员工编号
+	name varchar(20),			-- 员工姓名
+	job varchar(20),			-- 职位
+	topid int,					-- 直属上级
+	hdate date,					-- 受雇日期
+	sal int,					-- 薪资
+	bonus int,					-- 奖金
+	dept_id int,				-- 所在部门编号
+	foreign key(dept_id) references dept(id)
+);
+
+-- 往部门表中插入记录
+insert into dept values ('10', '研发部', '北京');
+insert into dept values ('20', '测试部', '上海');
+insert into dept values ('30', '运营部', '广州');
+insert into dept values ('40', '策划部', '深圳');
+
+-- 往员工表中插入记录
+insert into emp values ('1001', '王壹壹', '后台开发工程师', '1007', '1980-12-17', '800', 500, '20');
+insert into emp values ('1003', '齐贰贰', '前端开发工程师', '1011', '1981-02-20', '1900', '300', '10');
+insert into emp values ('1005', '王叁叁', '项目经理', '1011', '1981-02-22', '2450', '600', '10');
+insert into emp values ('1007', '刘肆肆', '架构师', '1017', '1981-04-02', '3675', 700, '20');
+insert into emp values ('1009', '张伍伍', '项目经理', '1011', '1981-09-28', '1250', '1400', '10');
+insert into emp values ('1011', '陈陆陆', '架构师', '1017', '1981-05-01', '3450', 400, '10');
+insert into emp values ('1013', '张柒柒', '后台开发工程师', '1011', '1981-06-09', '1250', 800, '10');
+insert into emp values ('1015', '程捌捌', '前端开发工程师', '1007', '1987-04-19', '3000', 1000, '20');
+insert into emp values ('1017', '韩玖玖', '董事长', null, '1981-11-17', '5000', null, null);
+insert into emp values ('1019', '刘拾拾', '项目经理', '1011', '1981-09-08', '1500', 500, '10');
+insert into emp values ('1021', '范拾壹', '后台开发工程师', '1007', '1987-05-23', '1100', 1000, '20');
+insert into emp values ('1023', '赵拾贰', '架构师', '1017', '1981-12-03', '950', null, '30');
+insert into emp values ('1025', '朴拾叁', '前端开发工程师', '1023', '1981-12-03', '3000', 600, '30');
+insert into emp values ('1027', '叶拾肆', '后台开发工程师', '1023', '1982-01-23', '1300', 400, '30');
+-- ------------------- 执行完毕 -----------------------

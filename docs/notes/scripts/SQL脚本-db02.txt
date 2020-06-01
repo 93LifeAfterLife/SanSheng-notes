@@ -26,3 +26,4 @@ insert into emp values(null,'柒柒','男','1995-08-18','测试部','测试员',
 insert into emp values(null,'捌捌','男','1999-03-18','测试部','测试员','3200','600');
 insert into emp values(null,'玖玖','男','1990-04-18','测试部','测试员','2700','400');
 insert into emp values(null,'拾拾','男','1980-05-18',null,'CEO','50000',null);
+-- ------------- 执行完毕 -------------------

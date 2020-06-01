@@ -1,0 +1,39 @@
+-- -----------------------------------------
+-- 测试脚本: 创建 db01 库, 新建员工部门表并插入数据
+-- -----------------------------------------
+-- 删除重复库, 确保 db01 库并不是你重要的数据库
+drop database if exists db01;
+-- 创建 db01 库
+create database db01 charset utf8mb4;
+-- 进入 db01 库
+use db01;
+-- 创建部门表, 约束 id, name 字段
+create table dept(
+	id int primary key auto_increment,
+	name varchar(20) unique not null
+);
+-- 创建员工表, 约束 id, name, dept_id 字段
+create table emp(
+	id int primary key auto_increment,
+	name varchar(20) unique not null,
+	dept_id int,
+	foreign key(dept_id) references dept(id)	-- 设置外键
+);
+
+-- 往两表中插入测试用数据
+insert into dept values(null, '研发部');
+insert into dept values(null, '测试部');
+insert into dept values(null, '设计部');
+insert into dept values(null, '策划部');
+insert into dept values(null, '运营部');
+insert into dept values(null, '编辑部');
+insert into dept values(null, '市场部');
+insert into dept values(null, '客服部');
+
+insert into emp values(null, '壹壹', 1);
+insert into emp values(null, '贰贰', 2);
+insert into emp values(null, '叁叁', 2);
+insert into emp values(null, '肆肆', 3);
+insert into emp values(null, '伍伍', 4);
+insert into emp values(null, '陆陆', 4);
+-- ------------- 执行完毕 -------------------
