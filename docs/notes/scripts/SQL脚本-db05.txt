@@ -1,0 +1,86 @@
+-- --------------------------------------------------
+-- 创建db05库
+-- --------------------------------------------------
+drop database if exists db05;
+create database db05 charset utf8;
+use db05;
+
+-- 创建课程表
+create table course(
+	c_id char(5) primary key not null,
+	c_name varchar(20) not null,
+	t_id char(10) not null
+);
+
+-- 插入课程数据
+insert into course values('001', '语文', '102');
+insert into course values('002', '数学', '101');
+insert into course values('003', '英语', '103');
+insert into course values('004', '物理', '107');
+insert into course values('005', '化学', '109');
+insert into course values('006', '生物', '108');
+
+-- 创建学生表
+create table student(
+	s_id char(10) primary key not null,
+	s_name varchar(20) not null,
+	s_birth date not null,
+	s_sex char(5) not null
+);
+
+-- 插入学生数据
+insert into student values('20200101', '赏天韵', '2003-02-15', '女');
+insert into student values('20200104', '崔卫华', '2001-12-05', '男');
+insert into student values('20200201', '甫永梅', '2001-01-05', '女');
+insert into student values('20200822', '可兰', '2002-01-05', '女');
+insert into student values('20200901', '皮兰', '2002-01-05', '女');
+insert into student values('20200902', '陆振旺', '2001-04-05', '男');
+
+-- 创建教师表
+create table teacher(
+	t_id char(5) primary key not null,
+	t_name varchar(20) not null
+);
+
+-- 插入教师数据
+insert into teacher values('101', '韩凌香');
+insert into teacher values('102', '于访');
+insert into teacher values('103', '孙夏');
+insert into teacher values('107', '丘北晶');
+insert into teacher values('108', '俞书慧');
+insert into teacher values('109', '郭正豪');
+
+-- 创建成绩表
+create table score(
+	s_id char(10) not null,
+	c_id char(5) not null,
+	s_score double,
+	primary key (s_id, c_id)
+);
+
+-- 插入成绩数据
+insert into score values('20200101', '001', 90.5);
+insert into score values('20200101', '002', 81);
+insert into score values('20200101', '003', 89.5);
+insert into score values('20200101', '007', 98);
+insert into score values('20200101', '008', 97);
+insert into score values('20200101', '009', 95);
+insert into score values('20200104', '001', 50);
+insert into score values('20200104', '002', 81);
+insert into score values('20200104', '003', 59);
+insert into score values('20200104', '007', 98);
+insert into score values('20200104', '008', 77);
+insert into score values('20200104', '009', 75);
+insert into score values('20200201', '001', 75);
+insert into score values('20200201', '002', 55);
+insert into score values('20200201', '003', 75);
+insert into score values('20200201', '007', 75);
+insert into score values('20200201', '008', 55);
+insert into score values('20200201', '009', 75);
+insert into score values('20200822', '001', 55);
+insert into score values('20200822', '002', 75);
+insert into score values('20200822', '003', 75);
+insert into score values('20200822', '007', 75);
+insert into score values('20200822', '008', 55);
+insert into score values('20200822', '009', 75);
+-- ------------------- 执行完毕 -----------------------

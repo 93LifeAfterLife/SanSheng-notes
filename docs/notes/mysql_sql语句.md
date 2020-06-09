@@ -17,7 +17,17 @@
 
    > 请参考 https://www.cnblogs.com/wuyifu/p/5949764.html MySQL 关键字及保留字
 
-   
+3. `MySQL` 对大小写敏感吗? 可通过参数 `lower_case_file_system` 查询!
+
+   - 在 `windows` 环境下是不敏感的, 查询时大小写均可
+
+   <div align="center"> <img src="https://i.loli.net/2020/06/06/3Sj7EcLAVsq5h2F.png"/> </div><br>
+
+   - 在 `linux` 环境下是敏感的, 大小写是需要区分的, 注意实际工作中可能会存在的坑!!! 
+
+   <div align="center"> <img src="https://i.loli.net/2020/06/06/21uIbUyR8oArsLv.png"/></div><br>
+
+
 
 ### ↪ 什么是 SQL 语言?
 
@@ -278,9 +288,11 @@ create table stu(
 );				-- 注意格式
 -- 查看建表结构
 desc stu;
+-- 查看建表语句
+show create table stu;
 ```
 
-<div align="center"> <img src="https://t1.picb.cc/uploads/2020/05/29/tJSHoa.png" width="400px"> </div><br>
+<div align="center"> <img src="https://t1.picb.cc/uploads/2020/05/29/tJSHoa.png" width="500px"> </div><br>
 
 ### ↪ 更新操作
 
@@ -413,14 +425,15 @@ select name, sal from emp where sal<2000 or sal>4000;
   
   -- 筛选出薪资大于 1500 的职位
   select job, min(sal) from emp group by job having min(sal)>1500; 
-```
-  
+  ```
+
+
 以上在进行分组后, 就无法使用 `where` , 只能用 `having` , 并放在分组之后.
-  
+
 还有一个区别就是, `where` 子句**不能使用列别名和聚合函数**, ( 如 count, sum, max, min, avg ... ), 而 `having` 子句中可以使用列别名和聚合函数.
-  
+
 究其原因, 都是因为 MySQL 语句的执行顺序导致的.
-  
+
 - SQL语句的书写顺序
   
     | SQL书写顺序 ( 由上到下 ) | 含义                                   |
@@ -639,46 +652,180 @@ where e.dept_id=d.id and sal>(
 
 10. 查询练习
 
+供参考的表记录:
+
+<div align="center"> <img src="https://t1.picb.cc/uploads/2020/06/01/tVDSQF.png" width="400px"> </div><br>
+
 ```mysql
 -- (外连接) 列出所有部门和其下的员工, 如果部门下没有员工, 显示null
-
+select * 
+from emp e right join dept d on e.dept_id=d.id; 
 ```
 
 查询结果: 
 
+<div align="center"> <img src="https://i.loli.net/2020/06/03/bZzSfEFWyDnBQrI.png"/> </div><br>
+
 ```mysql
 -- (关联查询) 列出在'测试部'任职的所有员工的详细信息
-
+select * 
+from emp e, dept d
+where e.dept_id=d.id and d.name='测试部';
 ```
 
 查询结果:
+
+<div align="center"> <img src="https://i.loli.net/2020/06/03/iAyIwFzEhO1fD7V.png"/>
+ </div><br>
 
 ```mysql
 -- (自连接) 列出所有员工及其直接上级, 显示员工的姓名、上级的编号与姓名
+select e1.name, e1.topid, e2.name
+from emp e1, emp e2
+where e1.topid=e2.id;
 ```
 
 查询结果:
+
+<div align="center"> <img src="https://i.loli.net/2020/06/03/xNMjlpBfQhSY7nW.png"/>
+ </div><br>
 
 ```mysql
 -- (分组、聚合函数) 列出最低薪资大于1500的各种职位, 显示职位和该职位的最低薪资
+select job, min(sal) 
+from emp 
+group by job
+having min(sal)>1500;
 ```
 
 查询结果:
+
+<div align="center"> <img src="https://i.loli.net/2020/06/03/JdFugpO7BSvfbDs.png"/>
+ </div><br>
 
 ```mysql
 -- (分组、组合函数) 列出在每个部门就职的员工数量、平均工资, 显示部门编号、员工数量以及平均薪资
+select dept_id, count(*), avg(sal)
+from emp
+group by dept_id;
 ```
 
 查询结果:
+
+<div align="center"> <img src="https://i.loli.net/2020/06/03/rLOVXZ8CsNblQRn.png"/>
+ </div><br>
 
 ```mysql
 -- (分组、关联、聚合函数) 查询至少有一个员工的部门, 显示部门编号、名称、位置以及人数
+select d.id, d.name, d.loc, count(*) 
+from emp e, dept d
+where e.dept_id=d.id
+group by d.id;
 ```
 
 查询结果:
 
+<div align="center"> <img src="https://i.loli.net/2020/06/09/ePnc8lGtTIjpbao.png"/> </div><br>
+
 ```mysql
 -- (自连接) 列出受雇日期早于直接上级的所有员工的编号、姓名以及部门名
+select e1.id, e1.name, d.name
+from emp e1, emp e2, dept d
+where e1.dept_id=d.id and e1.topid=e2.id and e1.hdate<e2.hdate;
+```
+
+查询结果: 
+
+<div align="center"> <img src="https://i.loli.net/2020/06/09/nZzEXNsjWJifGgm.png"/>
+ </div><br>
+
+
+
+### ↪ 修改表操作
+
+```mysql
+-- 创建测试用库 db06
+create database db06;
+use db06;
+create table emp(
+	id int,
+    name varchar(20),
+    sex char(1),
+    bitth date
+);
+```
+
+1. 新增列 `add`
+
+```mysql
+alter table emp add dept_id int, add addr varchar(50) not null;
+```
+
+2. 修改列 `modify`
+
+```mysql
+alter table emp modify id primary key;
+alter table emp modify id auto_increment; 	# 若没有设置主键, 无法设置自增
+```
+
+3. 删除列 `drop`
+
+```mysql
+alter table emp drop addr;
+```
+
+4. 删除主键
+
+   ①. 若存在自增则先删除自增, 使用 `modify` 修改
+
+   ```mysql
+   alter table emp modify id int;
+   ```
+
+   ②. 再删除主键约束
+
+   ```mysql
+   alter table emp drop primary key;
+   ```
+
+5. 添加外键
+
+```mysql
+-- 在 db06 中创建新的员工表和部门表
+drop table emp;
+
+create table dept(
+	id int primary key auto_increment,
+	name varchar(20),
+	loc varchar(50)
+);
+
+create table emp(
+	id int primary key auto_increment,
+    name varchar(20),
+    dept_id int,
+    foreign key(dept_id) references dept(id)
+);
+```
+
+现在有员工和部门表, 那么让哪张表来维护 ( 存放 ) 外键呢?
+
+答案是, 员工表, 一个部门应对多个员工, 则需*将映射关系保存在多的一方中*!
+
+```mysql
+show create table emp;	# 可以查看到外键名, 如 'emp_ibfk_1'
+```
+
+倘若一开始忘记了设置外键
+
+```mysql
+alter table emp drop foreign key emp_ibfk_1;	# 删除外键模拟未设置外键
+```
+
+则再次添加外键: 
+
+```mysql
+alter table emp add constraint fk_dept_id foreign key(dept_id) references dept(id);		# 外键约束的名称可以自己取便于理解的名称
 ```
 
 
@@ -701,10 +848,46 @@ where e.dept_id=d.id and sal>(
 
 
 
+### ↪ 备份与恢复
 
+- 备份 ( 转储 ) 指令 `mysqldump` 
 
+不用进入 mysql 的 client , 直接在命令行中使用 `mysqldump + <` 命令
 
+```mysql
+mysqldump -u<username> -p db05 > 绝对路径\db05.sql
+```
 
+如: 
+
+<img src="https://i.loli.net/2020/06/09/L2dcfjYnie8HEuP.png"/>
+
+将在目标文件夹下备份一个 `db05.sql` 文件.
+
+你可以用文本编辑器打开这个 sql 文件, 会发现, 备份只是备份了数据表, 并没有建库语句!!! 所以恢复数据库时, 还需要手动按照文件名来创建相同名的库, 这也是备份时使用原来库名的理由.
+
+- 恢复
+
+同样不需要进入 client, 直接使用 `mysql + >` 指令
+
+```mysql
+mysql -u<username> -p db05 < 绝对路径\db05.sql
+```
+
+为了测试, 我们先进入 client 中将 db05库, 彻底删除:
+
+```mysql
+drop database db05;
+show databases;	# 确保已删除
+
+-- 记住一定要创建一个库!
+create database db05 charset utf8;
+\q	# 退出数据库
+```
+
+<img src="https://i.loli.net/2020/06/09/eAX1OyU5cHm3n64.png"/>
+
+再去查看数据库里的表, 发现已然恢复, 和所转储备份的一模一样.
 
 
 ## ✒ 结语
@@ -718,3 +901,280 @@ where e.dept_id=d.id and sal>(
 
 
 ## ✒ 更新补充 & FAQ
+
+### ↪ 补充 : SQL练习题
+
+借鉴于网上流传甚广的50道 `SQL` 训练题, 在参考的同时尽可能作出最简洁、最富有逻辑的解答.
+
+- 关系模型
+  - **注意:** *关系的每一个分量必须是一个不可分的数据项, ( 理论上不允许表中还有表 )*
+
+1. 学生( 学生编号, 姓名, 生日, 性别) 
+2. 课程( 课程编号, 名称, 授课老师编号)
+3. 教师( 教师编号, 姓名)
+4. 成绩( 学生编号, 课程编号, 分数)
+
+> 准备数据, 执行脚本( 直接复制到MySQL终端命令行中 ): 
+>
+> 你可以在我的github上查看源文件 :  <a href="https://github.com/93LifeAfterLife/SanSheng-notes/tree/master/docs/notes/scripts" target="_blank">点击查看db05脚本</a>
+
+- 表数据
+
+<img src="https://i.loli.net/2020/06/08/w5MdTPJbLxWBOVA.png"/>
+
+( 注意成绩表中的 s_id 与 c_id 为联合主键, 创建一个单独的表用来保存多个主键的方式, 可以保证数据的唯一性和完整性, 在 Java 中也可以将联合主键的字段单独放在一个类中, 将联合主键的字段都注解为 `@Id` , 并在类上添加 `@IdClass( className.class )` 注解, 表明这是一个联合主键类 )
+
+- 问题与解答: 
+
+> 参考文章: 
+>
+> https://cloud.tencent.com/developer/article/1540526
+>
+> https://www.jianshu.com/p/476b52ee4f1b
+>
+> 或者查看我的笔记 :
+>
+> - [ ] -- TODO
+
+
+
+### ↪ 补充 : CentOS下安装MariaDB
+
+- 为何使用 `MariaDB` 替代 `MySQL`?
+
+> MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可 。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险， 因此社区采用分支的方式来避开这个风险。 MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。 在存储引擎方面，10.0.9版起使用XtraDB（名称代号为Aria）来代替MySQL的InnoDB。
+>
+> From : wikipedia
+
+1. 安装 `MariaDB` 依赖库, 首先配置仓库入口文件
+
+**注意 :** 切记!!! 不要在生产环境下, 对所有包或者 linux内核系统的版本进行更新, 特别是在 CentOS 下**不要**轻易使用 `yum update` 操作!!! 否则导致应用的依赖版本变更, 将造成大错!!! 因为我在很多介绍如何安装 `MariaDB` 或者 `MySQL` 的文章中都看到, 有不少作者将这个指令加入其中, 虽然单机测试中, 并没啥影响, 最多是花点时间重新更新下包、软件和内核, 但是我还是要提醒初学者, **切记不要在生产环境当中, 随意去升级已有的依赖或者系统!!!**
+
+首先我们进入 `MariaDB` 官网的下载中心, 查询自己的服务器系统、位数以及想要安装的数据库版本.
+
+> `MariaDB` 官方安装文档 : https://downloads.mariadb.org/mariadb/repositories
+
+如, 我的服务器系统为, CentOS v7.0 64 位 ( 选择 x86_64 ), 接着选择 `MariaDB` 的版本, 我这里选择稳定版 `10.4[Stable]`. 见下图 :
+
+<div align="center"> <img src="https://i.loli.net/2020/06/08/9XU4pm3MfkYtv5z.png"/> </div><br>
+
+接着进入终端命令行, 若使用 `YUM` 的方式安装, 则需按照官方文档所述, 新建一个 `MariaDB YUM` 仓库入口的配置文件
+
+```
+[root@localhost ~]# vi /etc/yum.repos.d/MariaDB.repo
+```
+
+文件名可以自定义, 也可以按照官方的要求使用类似的, 便于后续修改.
+
+在文件中粘贴以下配置 ( 如果你选择了不同的内核位数与数据库版本, 应复制你所看到的官网文档内容 ) : 
+
+```
+# MariaDB 10.4 CentOS repository list - created 2020-06-06 13:16 UTC
+# http://downloads.mariadb.org/mariadb/repositories/
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.4/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+```
+
+`esc + :wq` 保存退出即可, 我们就配置了仓库入口文件.
+
+2. 查询是否已然安装了 `MariaDB` 或者有冲突的 `MySQL` 依赖
+
+```
+[root@localhost ~]# rpm -qa | grep mariadb
+[root@localhost ~]# rpm -qa | grep mysql
+```
+
+没有返回消息则表示没有残留的依赖包. 如果存在, 则应先删除
+
+```
+[root@localhost ~]# rpm -e mysql-*
+错误：未安装软件包 mysql-* 
+[root@localhost ~]# rpm -e mariadb-*
+错误：未安装软件包 mariadb-* 
+```
+
+也可以选择使用 yum 的方式针对性地删除, 例如: 
+
+```
+[root@localhost ~]# yum remove mysql
+```
+
+会处理所有 `MySQL` 的依赖关系.
+
+3.  使用 `yum` 安装 `MariaDB` 的服务器与客户端
+
+```
+[root@localhost ~]# yum -y install MariaDB-server MariaDB-client
+```
+
+<div align="center"> <img src="https://i.loli.net/2020/06/08/Rr2bPf9BDqvdkWc.png"/> </div><br>
+
+图中, 我已然安装过, 所以会提示无须任何处理, 第一次安装完毕会有事务概要提示, 全部 ok 后即为安装成功, 不成功的原因最可能是前面第 2 步骤未全部清理旧依赖! 建议重新清理一遍.
+
+4. 启动 `MariaDB` 服务, 并进入 `MariaDB` 进行测试, 观察下默认设置与 `Windows` 的不同之处
+
+```
+[root@localhost ~]# systemctl start mariadb			# 启动 mariadb 服务
+[root@localhost ~]# mariadb -uroot -p				# 使用 root 权限进入 mariadb
+```
+
+<div align="center"> <img src="https://i.loli.net/2020/06/08/lAkTC85WgDIN294.png"/> </div><br>
+
+查看之前我所记录的一个坑 : 大小写问题!
+
+```mysql
+MariaDB [(none)]> show variables like '%case%';
+```
+
+<div align="center"> <img src="https://i.loli.net/2020/06/08/uEwL8VpShFzNBki.png"/> </div><br>
+
+5. MySQL 或者 MariaDB ( 可以看做本质是一样的 ) 在 Linux 下的重要指令
+
+- 服务命令:
+
+```
+systemctl start mariadb				# 启动服务
+systemctl stop mariadb.service		# 关闭服务
+systemctl restart mariadb 			# 重启服务
+systemctl enable mariadb			# 允许开机启动
+```
+
+- 初始化配置:
+
+```
+mysql_secure_installation
+```
+
+ 进入配置引导页, 先输入默认的 root 密码, 直接回车即可
+
+```
+Enter current password for root (enter for none):  # 初次运行直接回车
+Set root password? [Y/n] # 是否设置root用户密码，输入y并回车或直接回车
+New password: # 设置root用户的密码
+Re-enter new password: # 再输入一次你设置的密码
+Remove anonymous users? [Y/n] # 是否删除匿名用户，回车
+Disallow root login remotely? [Y/n] # 是否禁止root远程登录,回车,
+Remove test database and access to it? [Y/n] # 是否删除test数据库，回车
+Reload privilege tables now? [Y/n] # 是否重新加载权限表，回车
+```
+
+初始化 `MariaDB` 完成, 可以进行登陆测试!
+
+- 配置字符集:
+
+  默认的字符集规则如下:
+
+  <img src="https://i.loli.net/2020/06/08/I9FJWfTdvnxEuyt.png"/>
+
+  - GBK、UTF-8、utf8mb4
+    - GBK 专门用于解决中文编码, *不论中英文都是双字节*; 若用于中文程序开发, 客户也为中文, 则使用 GBK;
+    - UTF-8 用来解决国际上字符的多字节编码, 对*英文为单字节*, 对*中文为三字节*; 中外都有的用户, 则使用 UTF8节省英文字符空间;
+    - utf8mb4 ( most bytes 4 ) 用于*兼容四字节的 unicode*, 是 UTF-8 的超集; 保持4字节数据, 避免个别字符的显示乱码问题, 比如 emoji 采用的是4字节, 若需存储则使用 utf8mb4 .
+  - 注意在 `MySQL` 的 UTF-8 中支持的最大字符长度为3字节 ( 0xffff ) , 很多不常用的汉字或者新增的 unicode 字符如果是4字符的, 则在 mysql 中是不支持的,  建议换做 utf8mb4, 而且使用 `varchar` 替代 `char` 避免空间的浪费.
+  - 配置方法一 ( 通过配置文件 ) :  
+
+```
+[root@localhost my.cnf.d]# cd ~
+[root@localhost ~]# cd /etc/my.cnf.d
+[root@localhost my.cnf.d]# ls
+enable_encryption.preset  mysql-clients.cnf  server.cnf
+```
+
+接着修改 `server.cnf` 文件. 这种方式较为繁琐, 但是一劳永逸, 不需每次启动服务时重新设置.
+
+在 [mysqld] 标签下添加
+
+```
+init_connect='SET collation_connection = utf8_unicode_ci' 	# 连接使用的编码
+init_connect='SET NAMES utf8' 
+character-set-server=utf8	# 默认的内部操作字符集
+collation-server=utf8_unicode_ci 	
+skip-character-set-client-handshake
+```
+
+> 参考: https://yq.aliyun.com/articles/283374  MySQL字符集和校对规则（Collation）作者: [小麦苗](https://yq.aliyun.com/users/nudg3bxzllofu)
+
+在 `client.cnf` 的 [client] 标签下添加
+
+```
+default-character-set=utf8
+```
+
+在 `mysql-clients.cnf` 的 [mysql] 标签下添加
+
+```
+default-character-set=utf8
+```
+
+重启 mysql 服务. 则全部初始化为 utf-8 字符集.
+
+现在的字符集规则如下 : 
+
+<img src="https://i.loli.net/2020/06/08/bQN3P1J8BMkzA9L.png"/>
+
+校验字符集如下: 
+
+<img src="https://i.loli.net/2020/06/08/q2JfugEapMo9xSL.png"/>
+
+
+
+- 添加用户并设置权限
+
+```mysql
+create user username@localhost identified by 'password';	# 创建新用户
+grant all on *.* to username@localhost identified by 'password'; # 授权
+grant all on *.* to username@'%' identified by 'password'; # 外网登陆权限
+grant all privileges on *.* to username@'hostname' identified by 'password' with grant option;	# 授予权限控制的权限
+```
+
+<img src="https://i.loli.net/2020/06/08/bF7kMKrcuPxXvZ5.png"/>
+
+你可以在 mysql 库下查询用户信息 :
+
+```mysql
+use mysql;
+select host,user,password from user;
+```
+
+更精细的赋予权限, 可以将指令中的 `all privileges` 改为 `select,insert,update,delete,create,drop,index,alter,grant,references,reload,shutdown,process,file` 其中的单独权限即可.
+
+- 查询库和表占用的空间
+
+```mysql
+select table_schema,round(sum(DATA_LENGTH/1024/1024),2) as datasize from tables 
+group by table_schema;	# 查询所有库大小, 取两位有效小数, 按库名排序
+ 
+select table_name, concat(round(sum(data_length/1024/1024),2),'MB') as datasize 
+from tables 
+where table_schema='mysql' 
+group by table_name;	# 查询 mysql 库下所有表的大小, 取两位有效小数, 以MB为单位, 按表名排序
+```
+
+这一阶段的补充就告一段落了! 感谢!
+
+> 参考文献: https://www.cnblogs.com/river2005/p/6813618.html 作者: clearriver
+
+
+
+### ↪ 补充 : 选择MySQL还是PostgreSQL?
+
+实际工作中, `MySQL` 的应用场景还是更多的, 但是不乏很多大型公司数据库有转向 `psSQL` 的倾向. 建议有时间还是需要预先了解, 只有实际使用过才可以在遇到时稳住脚跟.
+
+个人实感, 它们的关系就像你买手机选择 `xiaomi` 还是 `huawei` 一样, 差别没有那么大. 
+
+你可以看看它们俩官网的介绍, 就可知一二: 
+
+<img src="https://i.loli.net/2020/06/08/CmTEk3o7uNVshiX.png"/>
+
+MySQL - 世界上最受欢迎 ( 使用最广 ) 的开源数据库. ( 并入Oracle 后存在闭源风险, 但短时间内使用没有任何问题 ).
+
+<img src="https://i.loli.net/2020/06/08/CGBLpORD9aucW6m.png"/>
+
+PostgreSQL - 世界上最先进 ( 最智能, 设计更科学 ) 的开源关系型数据库. 
+
+如果你想具体了解, 可以参考他人的博客文章; 我这里也发现一篇好的讨论可以推荐一下: 
+
+> https://www.zhihu.com/question/20010554 知乎问答: PostgreSQL 与 MySQL 相比，优势何在？

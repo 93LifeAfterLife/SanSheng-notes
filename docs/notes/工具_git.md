@@ -5,13 +5,13 @@
 作者 : 叁昇 ( 93LifeAfterLife ) 	[![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
 公众号:
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/ca0c1d25208ae899.jpg" width="400px"> </div><br>纠错请联系工作邮箱 : tangdingjnust@163.com
+<div align="center"> <img src="https://i.loli.net/2020/06/03/XZ4FkMv3O8x2cjH.png" width="250px"> </div><br>纠错请联系工作邮箱 : tangdingjnust@163.com
 
 
 
 ###  ✏️ Git 简介
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/d03afd2c69189c17.png" width=""> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/fLR6h3AJHrxsqYB.png" width=""> </div><br>
 
 Git 是一个免费开源的分布式版本控制系统，旨在快速高效地处理不管是大型还是小型的项目的所有内容。
 
@@ -43,7 +43,7 @@ Git 是一个免费开源的分布式版本控制系统，旨在快速高效地�
 4. SVN 有全局版本号, 而 Git 没有;
 5. Git 的数据安全性 / 内容完整性要优于 SVN. 
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/0d833fda6aaef0f9.jpg" width="400px"> </div><br>[图解转载自Runoob]
+<div align="center"> <img src="https://i.loli.net/2020/06/03/KH56oj8r9xUaheb.jpg" width="400px"> </div><br>[图解转载自Runoob]
 
 ------
 
@@ -52,6 +52,8 @@ Git 是一个免费开源的分布式版本控制系统，旨在快速高效地�
 ### ✏️ Git 安装与配置
 
 下载地址: https://git-scm.com/downloads
+
+如果你所在地域或网段下载官网安装包过慢或者打不开, 可以尝试访问 aliyun 的镜像仓库进行下载, 地址为: https://npm.taobao.org/mirrors/git-for-windows ( windows版 )
 
 CentOS 下使用 `yum` 的安装命令如下:
 
@@ -112,7 +114,7 @@ $ git clone <repo> <directory>				// 拷贝到指定的目录下
 
 假如我要拷贝此项目到本地目录下进行管理, 有如下几种协议方式, 你可以在 GitHub 的这里看到:
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/a309ac7c0f24e23a.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/MROyHhVpCJq95fn.png" width="400px"> </div><br>
 
 ```
 $ git clone git@github.com:93LifeAfterLife/rabbitmq.git		   	// SSH 协议
@@ -134,7 +136,7 @@ git 把需要用来进行版本控制的本地文件目录称作为一个 `仓�
 
 #### ⛪ Git 仓库的结构
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/67189a824cb86208.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/AdWkmK1RTvVx2hL.png"/> </div><br>
 
 说明:
 
@@ -177,7 +179,8 @@ git commit -m "<commit message>"
 git push origin master
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/0ca8d7dc8faa0e1b.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/VSdJR1OxjfzNkol.png"/>
+ </div><br>
 
 如上图所示, 即是我更新当前文档时的 Git 代码提交流程.
 
@@ -231,7 +234,8 @@ $ git status --short						// 同 -s
 
 常见的状态码, 如下图:
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/e3ff5c8124abb5ec.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/S8yoDABVZYOEPJC.png"/>
+ </div><br>
 
 M 标记在第二个位置, 表示 `工具_git.md` 文档被修改了, 但是还没有被放入暂存区
 
@@ -245,7 +249,8 @@ M 标记在第二个位置, 表示 `工具_git.md` 文档被修改了, 但是还
 $ git add <filename>
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/06e22832eee81584.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/Vjt8MobOPpiyawA.png"/>
+ </div><br>
 
 add 后的文件将进入暂存区, 显示为 第一个位置的 A.
 
@@ -314,7 +319,8 @@ $ git diff HEAD
 $ git diff -stat
 ```
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/9b1e0a86746659ab.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/clpJ1vxSF2kt5ID.png"/>
+ </div><br>
 
 ------
 
@@ -442,13 +448,15 @@ $ git branch -d testing					// 删除不再使用的测试 testing 分支
 $ git log								// 紧接着使用 q 退出当前日志
 ```
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/60f7add1eb1423f8.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/oZQUwt5dNkhaGfJ.png"/>
+ </div><br>
 
 ```
 $ git log --oneline						// 查看历史记录的简洁版本
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/b8d7463db3eb3300.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/CJ6yFGgoERLzPrq.png"/>
+ </div><br>
 
 在此, 整个项目的开发历史, 一目了然!
 
@@ -458,7 +466,8 @@ $ git log --oneline						// 查看历史记录的简洁版本
 $ git log --graph
 ```
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/4196b07c17d402f4.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/pyzCBqd1uoa2XGL.png"/>
+ </div><br>
 
 - 更多的 `log` 参数
 
@@ -512,7 +521,9 @@ $ git reset --soft <commit number>
 $ git push
 ```
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/56510b1122b4c337.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/a2kTgoIm3wxGF74.png"/>
+
+ </div><br>
 
 如图中, 当前我们的 commit 是 `460b874...` , 假如我们想要回到 commit `7ff4ef5...` , 其中的 commit number 就是 `7ff4ef5`.
 
@@ -522,8 +533,8 @@ $ git push
 $ git reset --hard 7ff4ef5			// 请格外注意, 在有足够的把握的前提下才使用 hard 强制命令!!! 因为我提前将之间的全部代码已经追踪完毕 add 和 commit 了, 所以我使用 --hard, 如果你存在很多代码没有 add 和 commit ,建议你了解 --hard 的后果后再使用!!!而且在使用 git 中请保持良好的 add & commit 习惯, 避免误操作导致代码丢失!!!
 ```
 
-
-<div align="center"> <img src="https://i1.fuimg.com/719027/7ec2f7b638337c39.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/J75rfj2XLxuqziA.png"/>
+ </div><br>
 
 reset 后发现, HEAD 指向了 `7ff4ef5` , 而原来的直到 `7ff4ef5` 间的数据已然全部删除.
 
@@ -581,13 +592,14 @@ $ ssh-keygen -t rsa -C "tangdingjnust@163.com"
 
 3. 之后会要求确认路径和输入密码, 可以一直回车, 成功就会在`~/` 根目录下 ( windows系统则在 `c/Users/Administrator/` ) 生成 `.ssh` 文件夹, 里面会创建一个 `id_rsa.pub` 文件, 编辑该文件, 复制 `key` ; 回到 github 网站, 在账户 ( `account` ) 下的设置 ( `setting` ) 里
 
-   <div align="center"> <img src="https://i2.tiimg.com/719027/bca75b9f97e3132d.png" width=""> </div><br>
+   <div align="center"> <img src="https://i.loli.net/2020/06/03/SdUnMCDJKfIsHZ3.png" width=""> </div><br>
 
    
 
    选择 `SSH and GPG keys`, 点击 `New SSH key` 按钮, `title` 随意填写, `key` 为刚才所复制的, 就完成了本地与远程的连接验证了. 当然, 你可以多台客户端同时申请连接, 为自己布下工作网.
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/ea1de85a0004ac10.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/LfuMqaSmbxrQX4p.png"/>
+ </div><br>
 
 4. 验证是否成功: 
 
@@ -611,15 +623,18 @@ $ git remote -v				// 查看实际链接地址以及他们的别名 ( fetch, pus
 
 - `fetch & merge` 提取远程仓库
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/5d5d57810062b127.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/jKogkpOJr42xdWH.png"/>
+ </div><br>
 
 1. 在此之前, 我提前在 github 下新建一个仓库 `New repository`, 名称为 `test-git`, 其他选项保持默认. 点击 `create repository`, 会进入引导页面, 引导用户如何拉取到本地
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/5a70003fd8ff0296.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/Ify34VlzOEU9cPJ.png"/>
+ </div><br>
 
 2. 在本地选择一个仓库目录, 创建本地仓库, 并将本地库中所修改的文件提交到远程仓库中
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/df2891ba6ec90098.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/Gir58Ono4le7hYA.png"/>
+ </div><br>
 
 所有代码如下, 你可以快捷复制进行操作:
 
@@ -637,7 +652,8 @@ $ git push -u origin master
 
 3. 刷新页面, 查看 github 上仓库的变化, 会发现已然通过本地 Git 进行了远程仓库的更新了!
 
-<div align="center"> <img src="https://i2.tiimg.com/719027/1fe45858709dc2c4.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/J8OftRZyKNoQWe5.png"/>
+ </div><br>
 
 4. 直接在 GitHub 上在线修改代码, 点击右上角的 '✏' ( 编辑 ) 按钮
 
@@ -755,7 +771,7 @@ Checking connectivity... done.
 
 [![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/ca0c1d25208ae899.jpg" width=""> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/XZ4FkMv3O8x2cjH.png" width="250px"> </div><br>
 
 ------
 
@@ -767,7 +783,8 @@ Checking connectivity... done.
 
 // To do 参考: https://www.jianshu.com/p/3f6477049ece 更改 DNS 的方法
 
-<div align="center"> <img src="https://i1.fuimg.com/719027/f5cdabd451379638.png" width="400px"> </div><br>
+<div align="center"> <img src="https://i.loli.net/2020/06/03/irMo9uG1H6PT4yw.png"/>
+ </div><br>
 
 如图, 今日在家中练习后台管理逻辑, 从掘金的推荐上发现一个 star 数过万的低代码项目 jeecg-boot, 但是 clone 仓库时发现从 github 接收文件的速度实在太慢了, 仅仅只有 30 kb/s 的龟速...虽说整个项目也才几十 mb , 但是这种速度实在让人难以忍受!
 
