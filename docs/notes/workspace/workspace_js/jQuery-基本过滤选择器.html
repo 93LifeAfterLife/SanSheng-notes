@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>jQuery - 基本过滤选择器</title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+		div,
+		span {
+			width: 140px;
+			height: 140px;
+			margin: 20px;
+			background: #9999CC;
+			border: #000 1px solid;
+			float: left;
+			font-size: 17px;
+			font-family: Roman;
+		}
+
+		div.mini {
+			font-size: 14px;
+			height: 53px;
+			width: 47px;
+			background: #CC66FF;
+			border: #000 1px solid;
+			font-family: Roman;
+		}
+
+		div.mini01 {
+			height: 65px;
+			width: 65px;
+			background: pink;
+		}
+
+		input {
+			margin: 5px 5px;
+		}
+	</style>
+
+	<!--引入jquery的js库-->
+	<script src="js/jquery-1.4.2.js"></script>
+	<script type="text/javascript">
+		/* 文档就绪事件函数(即在浏览器加载完最后一个标签后立即执行) */
+		$(function () {
+			/* ---------基本过滤选择器练习--------- */
+			/* 1、选中b1按钮,为b1按钮绑定点击事件，点击b1按钮：
+				改变第一个 div 元素的背景色为 #F41480  */
+			$("#b1").click(function () {
+				$("div:first").css("background-color", "#F41480");
+			});
+
+			/* 2、选中b2按钮,为b2按钮绑定点击事件，点击b2按钮：
+				改变最后一个 div 元素的背景色为 #9ACD32  */
+			$("#b2").click(function () {
+				$("div:last").css("background-color", "#9ACD32");
+			});
+
+			/* 2、选中b3按钮,为b3按钮绑定点击事件，点击b3按钮：
+				改变索引值为等于 3 的 div 元素的背景色为 #EA3AD8  */
+			$("#b3").click(function () {
+				$("div:eq(3)").css("background-color", "#EA3AD8");
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<input type="button" value=" 改变第一个 div 元素的背景色为 #F41480 " id="b1" />
+	<input type="button" value=" 改变最后一个 div 元素的背景色为 #9ACD32 " id="b2" />
+	<input type="button" value=" 改变索引值为等于 3 的 div 元素的背景色为 #EA3AD8 " id="b3" />
+
+	<h1>点击按钮查看效果...</h1>
+
+	<div id="one">id为one</div>
+
+	<div id="two">
+		id为two
+		<div class="mini"> class是 mini</div>
+	</div>
+
+	<div class="one" title="aa">
+		class是 one
+		<div class="mini"> class是 mini</div>
+		<div class="mini"> class是 mini</div>
+	</div>
+	<div class="one">
+		class是 one
+		<div class="mini01"> class是 mini01</div>
+		<div class="mini"> class是 mini</div>
+	</div>
+
+	<br>
+	<div id="mover">动画</div>
+	<br>
+</body>
+
+</html>

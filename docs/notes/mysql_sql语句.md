@@ -890,6 +890,14 @@ create database db05 charset utf8;
 再去查看数据库里的表, 发现已然恢复, 和所转储备份的一模一样.
 
 
+
+### ↪ 事务操作
+
+> 查看 [数据库系统原理](mysql_数据库系统原理.md) 中的事务第四节
+
+
+
+
 ## ✒ 结语
 
 感谢你的查阅, 欢迎 star 我的 github 开源仓库! 或者关注我的个人公众号! 
@@ -1140,6 +1148,19 @@ select host,user,password from user;
 ```
 
 更精细的赋予权限, 可以将指令中的 `all privileges` 改为 `select,insert,update,delete,create,drop,index,alter,grant,references,reload,shutdown,process,file` 其中的单独权限即可.
+
+
+
+修改密码: ( 使用 root 相同权限的账户登录 )
+
+```mysql
+mysql> alter user "root"@"localhost" identified by "新密码";  --方法1
+mysql> update user set authentication_string=password("新密码") where user="root";  -- 方法2
+mysql> flush privileges;
+mysql> quit
+```
+
+
 
 - 查询库和表占用的空间
 

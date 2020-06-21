@@ -15,10 +15,8 @@
 - [JDBC](notes/java_jdbc.md) </br>
 
 ## 📑 WEB前端技术
-- [H5](notes/web_html5.md) </br>
-- [CSS3](notes/web_css3.md) </br>
-- [JavaScript](notes/web_javascript.md) </br>
-- [jQuery](notes/web_jquery.md) </br>
+- [H5 & CSS3](notes/web_html5&css3.md) </br>
+- [JavaScript & JQuery](notes/web_javascript&jquery.md) </br>
 - [Servlet](notes/web_servlet.md) </br>
 - [Tomcat](notes/web_tomcat.md) </br>
 - [Ajax](notes/web_ajax.md) </br>

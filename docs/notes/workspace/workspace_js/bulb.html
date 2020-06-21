@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light up a bulb!</title>
+</head>
+<body>
+    <img id="bulb" onclick="lightUp(this)" src="b01.gif" alt="Sorry, bulb image not found" title="Click to open or close">
+    <script>
+        function lightUp(e) {
+            e.src = e.src.match('b02')?"b01.gif":"b02.gif";
+        }
+    </script>
+</body>
+</html>

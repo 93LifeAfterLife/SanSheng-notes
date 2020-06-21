@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery - 基础选择器</title>
+    <style>
+        body {
+            font-family: "微软雅黑"
+        }
+
+        div,
+        span {
+            width: 140px;
+            height: 140px;
+            margin: 20px;
+            background: #9999CC;
+            border: #000 1px solid;
+            float: left;
+            font-size: 17px;
+            font-family: Roman;
+        }
+
+        div.mini {
+            width: 60px;
+            height: 50px;
+            background: #CC66FF;
+            border: #000 1px solid;
+            font-size: 12px;
+            font-family: Roman;
+        }
+
+        div.mini01 {
+            height: 50px;
+            width: 65px;
+            background: pink;
+        }
+
+        input {
+            margin: 5px 5px;
+        }
+    </style>
+    <script src="jquery-3.4.1.js"></script>
+    <script>
+        /* 文档就绪事件函数 */
+        $(function () {
+            /* 1 */
+            $("#button1").click(function () {
+                $("div").css("background-color", "#FF69B4");
+            });
+            /* 2 */
+            $("#button2").click(function () {
+                $("#one").css("background-color", "#9ACD32");
+            });
+            /* 3 */
+            $("#button3").click(function () {
+                $(".mini").css("background-color", "#FF6347");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- 按钮1 -->
+    <input type="button" value="改变元素名为 div 的所有元素背景色为 #FF69B4" id="button1">
+    <!-- 按钮2 -->
+    <input type="button" value=" 改变 id 为 one 的元素的背景色为 #9ACD32 " id="button2">
+    <!-- 按钮3 -->
+    <input type="button" value=" 改变 class 为 mini 的所有元素的背景色为 pink " id="button3">
+    <h1>点击按钮查看效果...</h1>
+    <div id="one">div: id为one</div>
+    <div id="two" class="mini">
+        div: id为two,class是 mini
+        <div class="mini"> class是 mini</div>
+    </div>
+    <div class="one">
+        div: class是 one
+        <div class="mini"> div: class是 mini</div>
+        <div class="mini"> div: class是 mini</div>
+    </div>
+    <div class="one">
+        div: class是 one
+        <div class="mini01"> div: class是 mini01</div>
+        <div class="mini"> div: class是 mini</div>
+    </div>
+    <div>div</div>
+    <span> span </span>
+    <span class="mini"> span: class是mini </span>
+</body>
+
+</html>

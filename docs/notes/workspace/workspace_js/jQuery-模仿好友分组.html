@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery - 模仿好友分组</title>
+    <style type="text/css">
+        table {
+            border: #09f 1px solid;
+            width: 200px;
+            border-collapse: collapse;
+            margin: 15px 10px;
+            width: 20%;
+            margin: 20px 20px;
+        }
+
+        table td {
+            border: #06f 1px solid;
+            background-color: #6f5f3e;
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        table td div {
+            background-color: #ff9;
+            text-align: left;
+            line-height: 28px;
+            padding-left: 14px;
+            text-indent: padding-left : 20px;
+        }
+
+        table td span {
+            color: #fff;
+            font-size: 19px;
+            width: 100%;
+            border: none;
+            display: block;
+            cursor: pointer;
+        }
+        table td a:hover {
+            color: #0c0
+        }
+    </style>
+
+<script src="jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	function openDiv(thisObj) {
+        // 1.展开当前分组前先关闭其他的所有分组
+        $(thisObj).parents("tr").siblings().find("div").hide();
+        // 2.改变分组的状态, 若关闭则展开, 反之则关闭
+        $(thisObj).next().toggle(500);
+    }
+</script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Eagle Union</span>
+                <div style="display: none;">
+                    Laffey <br>
+                    Helena <br>
+                    Cleveland <br>
+                    Enterprise <br>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Royal Navy</span>
+                <div style="display: none;">
+                    Monarch <br>
+                    Illustrious <br>
+                    Warspite <br>
+                    Hood <br>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Sakura Empire</span>
+                <div style="display: none;">
+                    Amagi <br>
+                    Ryūhō <br>
+                    Yukikaze <br>
+                    Kawakaze <br>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Iron Blood</span>
+                <div style="display: none;">
+                    Friedrich der Große <br>
+                    Roon <br>
+                    Bismarck <br>
+                    Prinz Eugen <br>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS - 简单函数</title>
+    <style>
+        #result {
+            border: 1px solid #999;
+            width: 500px;
+            /* 自动换行 */
+            height: auto;
+            word-wrap: break-word;
+            word-break: break-all;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function myFn() {
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            var arr = [];
+            if (x <= y) {
+                for (let i = x, j = 0; i <= y; i++) {
+                    if (i % 3 == 0) {
+                        arr[j] = i;
+                        j++;
+                    }
+                }
+            } else {
+                for (let i = y; i <= x; i++) {
+                    if (i % 3 == 0) {
+                        arr[j] = i;
+                        j++;
+                    }
+                }
+            }
+            var result = document.getElementById("result");
+            result.innerHTML = arr;
+        }
+    </script>
+</head>
+
+<body>
+    <div>请输入两个整数, 然后遍历打印之间的所有 3 的倍数</div>
+    <div>输入x :
+        <input type="text" id="x">
+    </div>
+    <div>输入y :
+        <input type="text" id="y">
+    </div>
+    <div>
+        <input type="button" value="点击输出结果" id="output" onclick="myFn()"> 结果为: </input>
+    </div>
+    <div id="result"></div>
+    <div>
+        <input type="reset" onclick="history.go(0)">    <!-- Browser对象之history对象 -->
+    </div>
+</body>
+</html>

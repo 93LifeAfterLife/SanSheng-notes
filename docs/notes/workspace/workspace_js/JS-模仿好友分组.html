@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS - 模仿好友分组</title>
+    <style type="text/css">
+        table {
+            border: #09f 1px solid;
+            width: 200px;
+            border-collapse: collapse;
+            margin: 15px 10px;
+            width: 20%;
+            margin: 20px 20px;
+        }
+
+        table td {
+            border: #06f 1px solid;
+            background-color: #6f5f3e;
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        table td div {
+            background-color: #ff9;
+            text-align: left;
+            line-height: 28px;
+            padding-left: 14px;
+            text-indent: padding-left: 20px;
+        }
+
+        table td span {
+            color: #fff;
+            font-size: 19px;
+            width: 100%;
+            border: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        table td a:hover {
+            color: #0c0
+        }
+    </style>
+    <script type="text/javascript">
+        function openDiv(thisObj) {
+            // 1.获取当前分组的div
+            var div = thisObj.parentNode.getElementsByTagName("div")[0];
+            // 2.判断当前分组是否展开
+            if (div.style.display == "block") {
+                // 3.如果是打开的, 则关闭div
+                div.style.display = "none";
+            } else {
+                // 4.如果是关闭的, 则先关闭其他分组的div
+                var allDiv = document.getElementsByTagName("div");
+                for (let i = 0; i < allDiv.length; i++) {
+                    allDiv[i].style.display = "none";
+                }
+                // 5.再打开当前的div
+                div.style.display = "block";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Eagle Union</span>
+                <div style="display: none;">
+                    Laffey <br>
+                    Helena <br>
+                    Cleveland <br>
+                    Enterprise <br>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Royal Navy</span>
+                <div style="display: none;">
+                    Monarch <br>
+                    Illustrious <br>
+                    Warspite <br>
+                    Hood <br>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Sakura Empire</span>
+                <div style="display: none;">
+                    Amagi <br>
+                    Ryūhō <br>
+                    Yukikaze <br>
+                    Kawakaze <br>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span onclick="openDiv(this)">Iron Blood</span>
+                <div style="display: none;">
+                    Friedrich der Große <br>
+                    Roon <br>
+                    Bismarck <br>
+                    Prinz Eugen <br>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
