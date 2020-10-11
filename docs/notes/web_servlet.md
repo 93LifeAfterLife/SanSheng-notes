@@ -111,9 +111,33 @@ public class HelloServlet extends HttpServlet {
 
 **注:** 在实际开发中, 这样快捷生成的类中, 含有大量冗余信息, 也有我们所不期望的代码, 次次创建次次修改, 十分麻烦; 此时可以新建模板, 使用快捷提示模板来快速改变 `service` 相关代码, 使开发更敏捷.
 
-①. 
+模板代码如下: 
 
+```java
+package ${enclosing_package};
 
+import java.io.IOException;
+import javax.servlet.*;
+
+/**
+ * 
+ */
+public class ${primary_type_name} extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 处理 POST 请求参数乱码
+		request.setCharacterEncoding("utf-8");
+		// 处理响应正文乱码
+		response.setContentType("test/html;charset=utf-8");
+		// TODO	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+}
+```
 
 
 
@@ -121,11 +145,58 @@ public class HelloServlet extends HttpServlet {
 
 <img src="https://i.loli.net/2020/07/01/a6Cpz7qU3erjkWF.png"/>
 
-
-
-## Servlet 调用过程以及生命周期
-
-
+>  更多源码可以下载源码包进行查看
+>
+> [servlet_src.zip](docs/notes/resources)
 
 
 
+## Servlet 拓展
+
+### Servlet 调用过程
+
+❓ 思考一下, 当浏览器提交请求后, 可以看到返回的结果, 这之间, `Servlet` 是如何被调用的, 又是如何执行的呢?
+
+<img src="https://i.loli.net/2020/07/07/VJLEcAduZejMib8.gif"/>
+
+
+
+### Servlet 生命周期
+
+`Servlet` 在第一次被访问时创建 `Servlet` 实例, 创建之后服务器会立即调用 `init()` 方法进行初始化操作, 之后 `Servlet` 实例会一直驻留在服务器的内存之中, 为后续的请求服务.
+
+只要有请求来访问这个 `Servlet` , 服务器就会调用 `service()` 方法来处理请求, 直到服务器关闭, 或者 `Web` 应用被移除出容器, 随着 `Web` 应用的销毁, `Servlet` 实例也会跟着销毁, 在销毁之前服务器会调用 `destroy` 方法进行善后的处理.
+
+
+
+## Request & response
+
+### 请求响应简介
+
+服务器收到来自浏览器的请求后, 会调用 `Servlet` 的 `service()` 方法处理请求, 在调用 `service()` 之前, 会创建 `request` 对象 ( 用于封装 `http` 信息 ) 和 `response` 对象 ( 用于封装最后将要发送给浏览器的响应信息 ).
+
+在执行 `service()` 处理请求的过程中, 如果要获取任何请求相关的信息, 可以通过 `request` 调用方法来获取; 如果有任何数据要发送给浏览器, 可以通过 `response` 对象进行发送.
+
+
+
+## 会话技术
+
+### Cookie & Session 会话技术
+
+1. Cookie 的工作原理?
+Cookie 是通过 Set-Cookie 响应头和 Cookie 请求头将会话中产生的数据保存在客户端, 是客户端的技术. 客户端向服务端发送请求, 服务器获取需要保存的数据, 并将需要保存的数据通过 Set-Cookie 响应头发送给浏览器, 浏览器会以 Cookie 的形式保存在浏览器的内部. 当客户端再次发送请求访问服务器, 服务器可以通过 Cookie 请求头获取上次发送给浏览器的 Cookie 信息, 通过这种方式可以保存会话中产生的数据. 
+Cookie 旨在让每个客户端各自持有各自的数据, 只有需要时才带给服务器, 避免产生混乱.
+
+2. 如何删除 Cookie?
+由于在Cookie的API中没有提供直接删除Cookie的方法, 因此我们需要在服务端设置策略来间接提醒客户端删除Cookie.
+首先明确一点, 浏览器是根据Cookie的名称、path、domain ( 后两者不设置时是默认相同的 ) 来区分Cookie的.
+此时, 可以向客户端再发一个同名的Cookie并将其 Maxage ( 存活时间 ) 设置为 0, 浏览器识别到会误认为是用一个Cookie, 后接受的Cookie会覆盖之前发送的Cookie, 其属性是立即删除, 从而达到删除Cookie的效果.
+
+3. Session 的工作原理?
+Session 是将会话中产生的数据保存在服务端, 是服务端的技术.
+浏览器第一次发送请求需要保存数据时, 服务端获取到需要保存的数据, 去服务器内部检查一下有没有为当前浏览器服务的 session, 如果有就直接拿过来用, 若没有, 就创建一个新的 session 并保存, 然后以 id 的方式响应给客户端. 当浏览器再去访问服务器时, 服务器可以从 session 中获取到该数据, 通过这种方式也可以来保存会话中产生的数据.
+
+ 4. Session 域对象的销毁?
+a) 超时: 若 session 30min 没有被使用, 则会超时销毁;
+b) 自杀: 当调用 session.invalidate() 方法时, 将立即销毁 session;
+c) 意外身亡: 当服务器非正常关闭时, session 会立即销毁. ps: 服务器正常关闭时, session 将以文件的形式保存在服务器的 work 目录下, 该过程被称为 session 的钝化 ( 序列化 ). 服务器再次启动后, session 会恢复, 这个过程为 session 的活化 ( 反序列化 ).
