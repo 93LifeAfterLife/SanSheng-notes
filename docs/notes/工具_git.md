@@ -321,7 +321,6 @@ $ git diff -stat
 
 <div align="center"> <img src="https://i.loli.net/2020/06/03/clpJ1vxSF2kt5ID.png"/>
  </div><br>
-
 ------
 
 
@@ -795,3 +794,82 @@ Checking connectivity... done.
 #### 👉 STS / Eclipse & IDEA 中的 Git 操作
 
 // To do 实际应用更多, 视图化操作更便捷
+
+
+
+#### 👉 .gitignore 文件
+
+```
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+server_log_home_IS_UNDEFINED
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+#*.gitignore
+
+# Logs and databases #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor Files #
+################
+*~
+*.swp
+
+# Gradle Files #
+################
+.gradle
+
+# Build output directies
+/target
+*/target
+/log
+*/log
+/build
+*/build
+var
+logs
+
+# IntelliJ specific files/directories
+out
+.idea
+*.ipr
+*.iws
+*.iml
+atlassian-ide-plugin.xml
+
+# Eclipse specific files/directories
+.classpath
+.project
+.settings
+.metadata
+
+# NetBeans specific files/directories
+.nbattrs
+*.orig
+```
+
