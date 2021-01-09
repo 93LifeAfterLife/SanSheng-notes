@@ -1,6 +1,6 @@
 <img src="https://i.loli.net/2020/06/03/WHGJ4ZdpRN5Bu9y.png" width="300px"/>
 
-- 这是一份笔记文档, 记录个人Java开发的学习历程, 还包含各类日常设计软件的使用技巧. 坚持更新与纠错. 欢迎查阅!
+- Java开发相关的个人笔记, 持续更新与纠错. 欢迎查阅!
 - 作者 : 叁昇 (93LifeAfterLife)
 
 [![stars](https://badgen.net/github/stars/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)    [![forks](https://badgen.net/github/forks/93LifeAfterLife/SanSheng-notes?icon=github&color=4ab8a1)](https://github.com/93LifeAfterLife/SanSheng-notes)
